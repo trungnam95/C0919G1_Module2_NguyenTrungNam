@@ -1,63 +1,10 @@
 package LopPTBac2;
-
 import java.util.Scanner;
 
-public class PTBac2 {
-    private double a;
-    private double b;
-    private double c;
-
-    public PTBac2(double a, double b, double c) {
-        this.a = a;
-        this.b = b;
-        this.c = c;
-    }
-
-    public PTBac2() {
-    }
-
-    public double getA() {
-        return a;
-    }
-
-    public void setA(double a) {
-        this.a = a;
-    }
-
-    public double getB() {
-        return b;
-    }
-
-    public void setB(double b) {
-        this.b = b;
-    }
-
-    public double getC() {
-        return c;
-    }
-
-    public void setC(double c) {
-        this.c = c;
-    }
-    public double getDelta(){
-        return Math.pow(b,2)-4*a*c;
-    }
-    public double getRoot1(){
-        return (-b+Math.sqrt(getDelta()))/(2*a);
-    }
-    public double getRoot2(){
-        return (-b-Math.sqrt(getDelta()))/(2*a);
-    }
-    public double nghiemDuyNhat(){
-        return -c/b;
-    }
-    public double nghiemKep(){
-        return -b/2*a;
-    }
-
+public class Main {
     public static void main(String[] args) {
         Scanner scanner=new Scanner(System.in);
-        PTBac2 pt=new PTBac2();
+        PTB2 pt=new PTB2();
         System.out.println("nhap vao so a");
         pt.setA(scanner.nextInt());
         System.out.println("nhap vao so B");

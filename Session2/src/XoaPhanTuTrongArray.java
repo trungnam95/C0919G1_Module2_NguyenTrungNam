@@ -29,4 +29,8 @@ public class XoaPhanTuTrongArray {
             System.out.print(array[i] + "\t");
         }
     }
+//    int[] temp=new int[arr.lenght-1];
+//    for(arr.lenght-1);
+//    temp[i]=(temp[i]>=index?temp[i]:temp[i+1]);
+//    return temp;
 }
