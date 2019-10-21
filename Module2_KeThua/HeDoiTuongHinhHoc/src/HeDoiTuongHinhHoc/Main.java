@@ -3,6 +3,7 @@ package HeDoiTuongHinhHoc;
 import HeDoiTuongHinhHoc.Models.Circle;
 import HeDoiTuongHinhHoc.Models.Rectangle;
 import HeDoiTuongHinhHoc.Models.Shape;
+import HeDoiTuongHinhHoc.Models.Square;
 
 public class Main {
     public static void main(String[] args) {
@@ -20,6 +21,11 @@ public class Main {
 //        System.out.println(re);
 //        re=new Rectangle("blue",false,3.9,4.1);
 //        System.out.println(re);
+        Square square = new Square();
+        System.out.println(square);
+        square = new Square(3.3);
+        System.out.println(square);
+        square = new Square(5.8, "yellow", true);
+        System.out.println(square);
     }
-
 }

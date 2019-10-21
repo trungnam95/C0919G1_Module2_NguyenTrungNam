@@ -13,6 +13,9 @@ public class Rectangle extends Shape {
     public Rectangle() {
     }
 
+    public Rectangle(double side, double side1) {
+    }
+
     public double getWidth() {
         return width;
     }
