@@ -17,5 +17,12 @@ public class Main {
         cylinder.setRadius(circle.getRadius());//goi phuong thuc de lay lai gia tri radius tu lop circle.
         cylinder.setHeight(scanner.nextDouble());
         System.out.println(cylinder.toString());
+//        Circle cy=new Cylinder();
+//        Scanner scanner=new Scanner(System.in);
+//        System.out.println("nhap vao ban kinh");
+//        ((Cylinder) cy).setRadius(scanner.nextDouble());
+//        System.out.println("nhap vao chieu cao");
+//        ((Cylinder) cy).setHeight(scanner.nextDouble());
+//        System.out.println(cy);
     }
 }
