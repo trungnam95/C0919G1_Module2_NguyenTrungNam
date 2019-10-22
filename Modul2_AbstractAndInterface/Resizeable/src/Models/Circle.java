@@ -1,17 +1,20 @@
 package Models;
 
-import java.util.Arrays;
+public class Circle extends Shape {
+    private double radius = 2.0;
 
-public class Circle extends Shape implements Resizeable {
-    private double radius;
+    public Circle() {
+    }
 
-    public Circle(String color, boolean filled, double radius) {
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    public Circle(double radius, String color, boolean filled) {
         super(color, filled);
         this.radius = radius;
     }
 
-    public Circle() {
-    }
     public double getRadius() {
         return radius;
     }
@@ -20,28 +23,25 @@ public class Circle extends Shape implements Resizeable {
         this.radius = radius;
     }
 
+    public double getArea() {
+        return radius * radius * Math.PI;
+    }
+
+    public double getPerimeter() {
+        return 2 * radius * Math.PI;
+    }
+
     @Override
     public String toString() {
-        return "A Circle with Area="
-                + getArea()
-                + ", which is a subclass of "
+        return "A Circle with radius="
+                + getRadius()
+                + ", which is a subclass of "+"Area: "+this.getArea()
                 + super.toString();
     }
 
     @Override
-    public void resize() {
-        Circle[] circles = new Circle[2];
-        circles[0] = new Circle("red", true, 2);
-        circles[1] = new Circle("blue", false, 4.4);
-        System.out.println(Arrays.toString(circles));
-//        Random rd = new Random();
-        double ran =  Math.floor((Math.random() * 100) + 1);
-        for (int i = 0; i <circles.length ; i++) {
+    public void resize(double percent) {
+        System.out.println("A Area of Circle after resize: "+percent+"% tang len la:" + (getArea() + getArea() * percent / 100));
 
         }
-        System.out.println(Arrays.toString(circles)+"tang len:"+ran+"%");
-    }
-    public double getArea(){
-        return Math.PI*Math.pow(radius,2);
-    }
 }

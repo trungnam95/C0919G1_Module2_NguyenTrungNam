@@ -1,15 +1,15 @@
 package Models;
 
-public class Shape {
-    private String color;
+public abstract class Shape {
+    private String color = "green";
     private boolean filled = true;
+
+    public Shape() {
+    }
 
     public Shape(String color, boolean filled) {
         this.color = color;
         this.filled = filled;
-    }
-
-    public Shape() {
     }
 
     public String getColor() {
@@ -35,4 +35,6 @@ public class Shape {
                 + " and "
                 + (isFilled() ? "filled" : "not filled");
     }
+
+    abstract void resize(double percent);
 }

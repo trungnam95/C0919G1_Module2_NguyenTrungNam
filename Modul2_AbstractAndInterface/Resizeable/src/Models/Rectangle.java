@@ -1,39 +1,21 @@
 package Models;
 
-import java.util.Arrays;
+public class Rectangle extends Shape {
+    private double width = 1.0;
+    private double length = 1.0;
 
-public class Rectangle extends Shape implements Resizeable{
     public Rectangle() {
-
     }
 
-    @Override
-    public void resize() {
-        Rectangle[] rectangles = new Rectangle[2];
-        rectangles[0] = new Rectangle("red", true, 2,4);
-        rectangles[1] = new Rectangle("blue", false, 4.4,8);
-        System.out.println(Arrays.toString(rectangles));
-//        Random rd = new Random();
-//        double kq = 0;
-        double ran =  Math.floor((Math.random() * 100) + 1);
-        for (Rectangle rectangle : rectangles) {
-//            kq=(rectangle.getArea()+(rectangle.getArea()*(ran/100)));
-               rectangle.getArea(rectangle.getArea()+(rectangle.getArea()*(ran/100)));
-
-        }
-        System.out.println(Arrays.toString(rectangles)+"tang len:"+ran+"%");
+    public Rectangle(double width, double length) {
+        this.width = width;
+        this.length = length;
     }
-    private double width;
-    private double height;
 
-    public Rectangle(String color, boolean filled, double width, double height) {
+    public Rectangle(double width, double length, String color, boolean filled) {
         super(color, filled);
         this.width = width;
-        this.height = height;
-    }
-
-    public Rectangle(String color, boolean filled) {
-        super(color, filled);
+        this.length = length;
     }
 
     public double getWidth() {
@@ -44,24 +26,34 @@ public class Rectangle extends Shape implements Resizeable{
         this.width = width;
     }
 
-    public double getHeight() {
-        return height;
+    public double getLength() {
+        return length;
     }
 
-    public void setHeight(double height) {
-        this.height = height;
+    public void setLength(double length) {
+        this.length = length;
     }
-//    public double setArea(double v){
-//        return width*height;
-//    }
-    public double getArea(){
-        return width*height;
+
+    public double getArea() {
+        return width * this.length;
     }
+
+    public double getPerimeter() {
+        return 2 * (width + this.length);
+    }
+
     @Override
     public String toString() {
-        return "Rectangle{" +
-               "Area= "+getArea()+
-                super.toString()+
-                '}';
+        return "A Rectangle with width="
+                + getWidth()
+                + " and length="
+                + getLength()
+                + ", which is a subclass of "
+                + "area:"+getArea();
+    }
+
+    @Override
+    void resize(double percent) {
+        System.out.println("A Area of Rectangle after resize: "+percent+"% tang len la:" + (getArea() + getArea() * percent / 100));
     }
 }
