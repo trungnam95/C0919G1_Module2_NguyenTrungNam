@@ -1,6 +1,6 @@
 package Models;
 
-public class Rectangle extends Shape {
+public class Rectangle extends Shape implements Resizeable {
     private double width = 1.0;
     private double length = 1.0;
 
@@ -53,7 +53,7 @@ public class Rectangle extends Shape {
     }
 
     @Override
-    void resize(double percent) {
+    public void resize(double percent) {
         System.out.println("A Area of Rectangle after resize: "+percent+"% tang len la:" + (getArea() + getArea() * percent / 100));
     }
 }

@@ -1,6 +1,6 @@
 package Models;
 
-public class Square extends Rectangle {
+public class Square extends Rectangle implements Resizeable {
     public Square() {
     }
 
@@ -39,7 +39,7 @@ public class Square extends Rectangle {
                 +getArea();
     }
 
-    void resize(double percent) {
+   public void resize(double percent) {
         System.out.println("A Area of Square after resize: "+percent+"% tang len la:" + (getArea() + getArea() * percent / 100));
     }
 }

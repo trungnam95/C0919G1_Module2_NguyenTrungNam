@@ -1,6 +1,6 @@
 package Models;
 
-public class Circle extends Shape {
+public class Circle extends Shape implements Resizeable {
     private double radius = 2.0;
 
     public Circle() {
@@ -38,6 +38,7 @@ public class Circle extends Shape {
                 + ", which is a subclass of "+"Area: "+this.getArea()
                 + super.toString();
     }
+
 
     @Override
     public void resize(double percent) {
