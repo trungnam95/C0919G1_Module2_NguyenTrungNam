@@ -3,10 +3,10 @@ package Models;
 public class House extends Services {
     private String standardRoom;
     private String comfortDescription;
-    private String amountFloors;
+    private int amountFloors;
 
     public House(String serviceName, double areaUsed, double rentCost, int amountPeople,
-                 String standardRoom, String comfortDescription, String amountFloors) {
+                 String standardRoom, String comfortDescription, int amountFloors) {
         super(serviceName, areaUsed, rentCost, amountPeople);
         this.standardRoom = standardRoom;
         this.comfortDescription = comfortDescription;
@@ -31,11 +31,11 @@ public class House extends Services {
         this.comfortDescription = comfortDescription;
     }
 
-    public String getAmountFloors() {
+    public int getAmountFloors() {
         return amountFloors;
     }
 
-    public void setAmountFloors(String amountFloors) {
+    public void setAmountFloors(int amountFloors) {
         this.amountFloors = amountFloors;
     }
 

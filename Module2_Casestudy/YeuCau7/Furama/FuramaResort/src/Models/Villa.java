@@ -4,7 +4,7 @@ public class Villa extends House {
     private float poolArea;
 
     public Villa(String serviceName, double areaUsed, double rentCost, int amountPeople,
-                 String standardRoom, String comfortDescription, String amountFloors, float poolArea) {
+                 String standardRoom, String comfortDescription, int amountFloors, float poolArea) {
         super(serviceName, areaUsed, rentCost, amountPeople, standardRoom, comfortDescription, amountFloors);
         this.poolArea = poolArea;
     }
