@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="abc9db7e-47fe-4af6-a9e8-4f5ebdd05b3d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../../Module2_CTDLGT/ArrayListTheoThuVien/ArrayListTheoThuVien.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Draft/out/production/Draft/Array.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Draft/out/production/Draft/Array.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Module2_CTDLGT/TrienKhaiLopListDonGian/out/production/TrienKhaiLopListDonGian/Models/MyList.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Module2_CTDLGT/TrienKhaiLopListDonGian/out/production/TrienKhaiLopListDonGian/Models/MyList.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Module2_CTDLGT/TrienKhaiLopListDonGian/out/production/TrienKhaiLopListDonGian/Models/MyListTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Module2_CTDLGT/TrienKhaiLopListDonGian/out/production/TrienKhaiLopListDonGian/Models/MyListTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Module2_CTDLGT/TrienKhaiLopListDonGian/src/Models/MyList.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Module2_CTDLGT/TrienKhaiLopListDonGian/src/Models/MyList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Module2_CTDLGT/TrienKhaiLopListDonGian/src/Models/MyListTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Module2_CTDLGT/TrienKhaiLopListDonGian/src/Models/MyListTest.java" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="D:\Module2\Module2_Casestudy\YeuCau7\Task1\.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectId" id="1SftwijThONWDvJ1HEFkVkaIZGs" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="abc9db7e-47fe-4af6-a9e8-4f5ebdd05b3d" name="Default Changelist" comment="" />
+      <created>1571966717979</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1571966717979</updated>
+      <workItem from="1571966722165" duration="315000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
