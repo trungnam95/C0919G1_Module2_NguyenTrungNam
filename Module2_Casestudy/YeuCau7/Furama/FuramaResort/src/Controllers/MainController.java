@@ -33,6 +33,7 @@ public class MainController {
     private static void addServiceVilla() {
 
         System.out.println("==============Villa===========");
+        ArrayList<Villa> oldList=FunctionWriteAndReadFileCSV.getVillaFromCSV();
         Services villa = new Villa();
         addNewService(villa);
         sc.nextLine();
@@ -44,9 +45,9 @@ public class MainController {
         ((Villa) villa).setAmountFloors(sc.nextLine());
         System.out.println("Enter Pool Area");
         ((Villa) villa).setPoolArea(sc.nextFloat());
-        ArrayList<Villa> listVilla = new ArrayList<Villa>();
-        listVilla.add((Villa) villa);
-        FunctionWriteAndReadFileCSV.writeVillaToCSV(listVilla);
+//        ArrayList<Villa> listVilla = new ArrayList<Villa>();
+        oldList.add((Villa) villa);
+        FunctionWriteAndReadFileCSV.writeVillaToCSV(oldList);
         System.out.println("\nAdd Villa: " + villa.getServiceName() + " Successfully");
         sc.nextLine();
         backToMenu();
@@ -54,10 +55,38 @@ public class MainController {
 
     private static void addServiceHouse() {
         System.out.println("==============House===========");
+        ArrayList<House> oldList=FunctionWriteAndReadFileCSV.getHouseFromCSV();
+        Services house = new House();
+        addNewService(house);
+        sc.nextLine();
+        System.out.println("Enter room standard");
+        ((House) house).setStandardRoom(sc.nextLine());
+        System.out.println("Enter Description");
+        ((House) house).setComfortDescription(sc.nextLine());
+        System.out.println("Enter Amount Floors");
+        ((House) house).setAmountFloors(sc.nextLine());
+//        ArrayList<Villa> listVilla = new ArrayList<Villa>();
+        oldList.add((House) house);
+        FunctionWriteAndReadFileCSV.writeHouseToCSV(oldList);
+        System.out.println("\nAdd Villa: " + house.getServiceName() + " Successfully");
+//        sc.nextLine();
+        backToMenu();
     }
 
     private static void addServiceRoom() {
         System.out.println("==============Room===========");
+        ArrayList<Room> oldList=FunctionWriteAndReadFileCSV.getRoomFromCSV();
+        Services room = new Room();
+        addNewService(room);
+        sc.nextLine();
+        System.out.println("Enter room standard");
+        ((Room) room).setServiceFree(sc.nextLine());
+//        ArrayList<Villa> listVilla = new ArrayList<Villa>();
+        oldList.add((Room) room);
+        FunctionWriteAndReadFileCSV.writeRoomToCSV(oldList);
+        System.out.println("\nAdd Villa: " + room.getServiceName() + " Successfully");
+//        sc.nextLine();
+        backToMenu();
     }
 
     public static void displayMainMenu() {
@@ -68,10 +97,12 @@ public class MainController {
         switch (input) {
             case 1:
                 addNewServices();
+                break;
             case 2:
                 showServices();
-            case 3:
                 break;
+            case 3:
+                System.exit(0);
             default:
                 System.out.println("false");
                 break;
@@ -117,11 +148,14 @@ public class MainController {
             case 1:
                 showAllVilla();
                 displayMainMenu();
+                break;
             case 2:
                 showAllHouse();
+                displayMainMenu();
                 break;
             case 3:
                 showAllRoom();
+                displayMainMenu();
                 break;
             case 4:
                 displayMainMenu();
@@ -144,9 +178,19 @@ public class MainController {
 
     }
     private static void showAllHouse(){
-
+        ArrayList<House> listHouse=FunctionWriteAndReadFileCSV.getHouseFromCSV();
+        for (House house:listHouse) {
+            System.out.println("\n=================");
+            System.out.println(house.showInfor());
+            System.out.println("\n=================");
+        }
     }
     private static void showAllRoom(){
-
+        ArrayList<Room> listRoom=FunctionWriteAndReadFileCSV.getRoomFromCSV();
+        for (Room room:listRoom) {
+            System.out.println("\n=================");
+            System.out.println(room.showInfor());
+            System.out.println("\n=================");
+        }
     }
 }

@@ -23,13 +23,7 @@ public class Villa extends House {
 
     public String showInfor() {
         return
-                "\nserviceName='" + super.getServiceName() +
-                        "\nareaUsed=" + super.getAreaUsed() +
-                        "\nrentCost=" + super.getRentCost() +
-                        "\namountPeople=" + super.getAmountPeople() +
-                        "\nstandardRoom='" + super.getStandardRoom() +
-                        "\ncomfortDescription='" + super.getComfortDescription() +
-                        "\namountFloors='" + super.getAmountFloors()+
+                        super.showInfor()+
                         "\npoolarea:" + this.poolArea;
 
     }

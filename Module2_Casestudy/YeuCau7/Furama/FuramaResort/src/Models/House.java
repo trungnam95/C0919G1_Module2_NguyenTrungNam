@@ -15,7 +15,6 @@ public class House extends Services {
 
     public House() {
     }
-
     public String getStandardRoom() {
         return standardRoom;
     }
@@ -48,4 +47,14 @@ public class House extends Services {
 //                "\ncomfortDescription='" + comfortDescription +
 //                "\namountFloors='" + amountFloors ;
 //    }
+    @Override
+    public String showInfor() {
+        return "\nService name: " + super.getServiceName() +
+                "\nArea Used: " + super.getAreaUsed() +
+                "\nRent Cost: " + super.getRentCost() +
+                "\nAmount People: "+super.getAmountPeople()+
+                "\nStandard Room "+standardRoom+
+                "\nComfort Description "+comfortDescription+
+                "\nAmountFloors:"+amountFloors;
+    }
 }

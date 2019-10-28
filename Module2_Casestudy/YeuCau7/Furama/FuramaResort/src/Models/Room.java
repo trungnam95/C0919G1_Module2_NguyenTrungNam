@@ -14,6 +14,7 @@ public class Room extends Services {
     public Room() {
     }
 
+
     public String getServiceFree() {
         return serviceFree;
     }
@@ -22,10 +23,19 @@ public class Room extends Services {
         this.serviceFree = serviceFree;
     }
 
+//    @Override
+//    public String toString() {
+//        return "Room{" +
+//                "serviceFree='" + serviceFree + '\'' +super.toString()+
+//                '}';
+//    }
+
     @Override
-    public String toString() {
-        return "Room{" +
-                "serviceFree='" + serviceFree + '\'' +super.toString()+
-                '}';
+    public String showInfor() {
+        return    "\nService name: " + super.getServiceName() +
+                "\nArea Used: " + super.getAreaUsed() +
+                "\nRent Cost: " + super.getRentCost() +
+                "\nAmount People: "+super.getAmountPeople()+
+                "\nService free:"+serviceFree;
     }
 }

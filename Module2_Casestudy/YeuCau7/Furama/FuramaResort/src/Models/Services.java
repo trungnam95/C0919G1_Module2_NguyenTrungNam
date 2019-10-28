@@ -67,5 +67,5 @@ public abstract class Services {
 //                        "\namountPeople=" + amountPeople ;
 //    }
 
-
+    abstract String showInfor();
 }
