@@ -26,7 +26,8 @@ public class MainController {
     }
     private static void backToMenu(){
         System.out.println("===========press any key to back to menu=============");
-
+        sc.nextLine();
+        displayMainMenu();
     }
 
     private static void addServiceVilla() {
@@ -47,7 +48,8 @@ public class MainController {
         listVilla.add((Villa) villa);
         FunctionWriteAndReadFileCSV.writeVillaToCSV(listVilla);
         System.out.println("\nAdd Villa: " + villa.getServiceName() + " Successfully");
-//        displayMainMenu();
+        sc.nextLine();
+        backToMenu();
     }
 
     private static void addServiceHouse() {
@@ -100,7 +102,7 @@ public class MainController {
                 System.exit(0);
             default:
                 System.out.println("false");
-                break;
+                backToMenu();
         }
     }
 
@@ -114,7 +116,7 @@ public class MainController {
         switch (sc.nextInt()) {
             case 1:
                 showAllVilla();
-                break;
+                displayMainMenu();
             case 2:
                 showAllHouse();
                 break;
@@ -128,7 +130,7 @@ public class MainController {
                 System.exit(0);
             default:
                 System.out.println("Error");
-                displayMainMenu();
+               backToMenu();
         }
     }
     private static void showAllVilla(){
