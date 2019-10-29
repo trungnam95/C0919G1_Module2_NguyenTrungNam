@@ -1,20 +1,18 @@
 package Models;
 
-import java.sql.Struct;
-
 public class Customer {
     private String IDCustomer;
     private String nameCustomer;
     private String birthday;
     private String gender;
-    private int idCard;
-    private int phoneNumber;
+    private String idCard;
+    private String phoneNumber;
     private String emailCustomer;
     private String typeCustomer;
     private String address;
 
-    public Customer(String IDCustomer, String nameCustomer, String birthday, String gender, int idCard,
-                    int phoneNumber, String emailCustomer, String typeCustomer, String address) {
+    public Customer(String IDCustomer, String nameCustomer, String birthday, String gender, String idCard,
+                    String phoneNumber, String emailCustomer, String typeCustomer, String address) {
         this.IDCustomer = IDCustomer;
         this.nameCustomer = nameCustomer;
         this.birthday = birthday;
@@ -61,19 +59,19 @@ public class Customer {
         this.gender = gender;
     }
 
-    public int getIdCard() {
+    public String getIdCard() {
         return idCard;
     }
 
-    public void setIdCard(int idCard) {
+    public void setIdCard(String idCard) {
         this.idCard = idCard;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -106,7 +104,7 @@ public class Customer {
                 "\nIDCustomer: " + IDCustomer +
                 "\nnameCustomer: " + nameCustomer +
                 "\nbirthday: " + birthday +
-                "\n gender: " + gender +
+                "\ngender: " + gender +
                 "\nidCard: " + idCard +
                 "\nphoneNumber: " + phoneNumber +
                 "\nemailCustomer: " + emailCustomer +

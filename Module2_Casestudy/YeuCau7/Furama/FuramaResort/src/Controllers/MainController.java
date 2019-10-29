@@ -3,6 +3,7 @@ package Controllers;
 import Commons.FuncValidation;
 import Commons.FunctionWriteAndReadFileCSV;
 import Models.*;
+import com.sun.javafx.stage.FocusUngrabEvent;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -265,18 +266,37 @@ public class MainController {
         customer.setIDCustomer(java.util.UUID.randomUUID().toString().replace("-", ""));
         System.out.println("Enter name customer");
         customer.setNameCustomer(sc.nextLine());
+        while (!FuncValidation.checkNameServices(customer.getNameCustomer())){
+            System.out.println("Enter name customer is invalid please try again! ");
+            customer.setNameCustomer(sc.nextLine());
+        }
         System.out.println("Enter birthday customer");
         customer.setBirthday(sc.nextLine());
+        while (!FuncValidation.checkBirthday(customer.getBirthday())){
+            System.out.println("Enter birthday customer is invalid please try again!");
+            customer.setBirthday(sc.nextLine());
+        }
         System.out.println("Enter gender customer");
         customer.setGender(sc.nextLine());
         System.out.println("Enter id card customer");
-        customer.setIdCard(sc.nextInt());
-        sc.nextLine() ;
-        System.out.println("Enter phone number customer");
-        customer.setPhoneNumber(sc.nextInt());
-        sc.nextLine() ;
+        customer.setIdCard(sc.nextLine());
+        while (!FuncValidation.checkIDCard(customer.getIdCard())){
+            System.out.println("Enter id card customer is invalid please try again!");
+            customer.setIdCard(sc.nextLine());
+        }
+        System.out.println("Enter phone number");
+        customer.setPhoneNumber(sc.nextLine());
+        while(!FuncValidation.checkPhoneNumber(customer.getPhoneNumber())){
+            System.out.println("Enter phone number is invalid please try again!");
+            customer.setPhoneNumber(sc.nextLine());
+        }
+//        sc.nextLine() ;
         System.out.println("Enter email customer");
         customer.setEmailCustomer(sc.nextLine());
+        while (!FuncValidation.checkEmail(customer.getEmailCustomer())){
+            System.out.println("Enter email customer is invalid please try again!");
+            customer.setEmailCustomer(sc.nextLine());
+        }
         System.out.println("Enter type customer");
         customer.setTypeCustomer(sc.nextLine());
         System.out.println("Enter address customer");
