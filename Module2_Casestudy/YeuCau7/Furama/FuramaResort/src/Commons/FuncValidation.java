@@ -25,6 +25,10 @@ public class FuncValidation {
         regex="(09|01[2|6|8|9])+([0-9]{8})\\b";
         return str.matches(regex);
     }
+    public static boolean checkGender(String str){
+        regex="Female\\b|Male\\b|Unknow\\b";
+        return str.matches(regex);
+    }
     public static double checkValidNumberDouble(String content,String errmess){
         while (true){
             try {
@@ -58,4 +62,5 @@ public class FuncValidation {
             }
         }
     }
+
 }

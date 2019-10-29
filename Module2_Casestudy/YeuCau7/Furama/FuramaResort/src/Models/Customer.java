@@ -10,9 +10,10 @@ public class Customer {
     private String emailCustomer;
     private String typeCustomer;
     private String address;
+    private Services services;
 
     public Customer(String IDCustomer, String nameCustomer, String birthday, String gender, String idCard,
-                    String phoneNumber, String emailCustomer, String typeCustomer, String address) {
+                    String phoneNumber, String emailCustomer, String typeCustomer, String address,Services services) {
         this.IDCustomer = IDCustomer;
         this.nameCustomer = nameCustomer;
         this.birthday = birthday;
@@ -22,6 +23,7 @@ public class Customer {
         this.emailCustomer = emailCustomer;
         this.typeCustomer = typeCustomer;
         this.address = address;
+        this.services=services;
     }
 
     public Customer() {
@@ -98,6 +100,13 @@ public class Customer {
     public void setAddress(String address) {
         this.address = address;
     }
+    public Services getServices() {
+        return services;
+    }
+
+    public void setServices(Services services) {
+        this.services = services;
+    }
 
     public String showInforCustomer() {
         return
@@ -109,7 +118,7 @@ public class Customer {
                 "\nphoneNumber: " + phoneNumber +
                 "\nemailCustomer: " + emailCustomer +
                 "\ntypeCustomer: " + typeCustomer +
-                "\naddress: " + address ;
+                "\naddress: " + address;
 
     }
 

@@ -6,6 +6,8 @@ import Models.*;
 import com.sun.javafx.stage.FocusUngrabEvent;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class MainController {
@@ -140,7 +142,8 @@ public class MainController {
         System.out.println("2.Show service");
         System.out.println("3.Add new customer");
         System.out.println("4.Show information customer");
-        System.out.println("5.Exit");
+        System.out.println("5.Add new booking resort");
+        System.out.println("6.Exit");
         int input = sc.nextInt();
         switch (input) {
             case 1:
@@ -156,6 +159,9 @@ public class MainController {
                 displayMainMenu();
                 break;
             case 5:
+                addNewBookingResort();
+                break;
+            case 6:
                 System.exit(0);
             default:
                 System.out.println("false");
@@ -252,6 +258,8 @@ public class MainController {
     }
     private static void showInformationCustomers(){
         ArrayList<Customer> listCustomer = FunctionWriteAndReadFileCSV.getCustomerFromCSV();
+        //sap xep theo alpha B
+        listCustomer.sort(new SortName());
         for (Customer customer : listCustomer) {
             System.out.println("\n=================");
             System.out.println(customer.showInforCustomer());
@@ -276,8 +284,13 @@ public class MainController {
             System.out.println("Enter birthday customer is invalid please try again!");
             customer.setBirthday(sc.nextLine());
         }
-        System.out.println("Enter gender customer");
+        System.out.println("Enter gender customer Male/Female/Unknow");
         customer.setGender(sc.nextLine());
+//        FuncValidation.checkType(customer.getGender());
+        while (!FuncValidation.checkGender(customer.getGender())){
+            System.out.println("Enter gender customer Male/Female/Unknow is invalid please try again!");
+            customer.setGender(sc.nextLine());
+        }
         System.out.println("Enter id card customer");
         customer.setIdCard(sc.nextLine());
         while (!FuncValidation.checkIDCard(customer.getIdCard())){
@@ -306,6 +319,49 @@ public class MainController {
         System.out.println("\nAdd Customer: " + customer.getNameCustomer() + " Successfully");
 //        sc.nextLine();
         backToMenu();
-
+    }
+    private static void addNewBookingResort(){
+        ArrayList<Customer> listCustomers=FunctionWriteAndReadFileCSV.getCustomerFromCSV();
+        //sap xep
+        listCustomers.sort(new SortName());
+        int i=1;
+        for (Customer cus:listCustomers){
+            System.out.println("\n========================");
+            System.out.println("No "+i);
+            System.out.println(cus.showInforCustomer());
+            System.out.println("\n========================");
+            i++;
+        }
+        System.out.println("Choose customer booking");
+        Customer customer=listCustomers.get(sc.nextInt()-1);
+        System.out.println("\n1.Booking Villa");
+        System.out.println("\n2.Booking House");
+        System.out.println("\n3.Booking Room");
+        System.out.println("\nChoose service booking");
+        int choose=sc.nextInt();
+        switch (choose){
+            case 1:
+                i=1;
+                ArrayList<Villa> listVillas=FunctionWriteAndReadFileCSV.getVillaFromCSV();
+                for (Villa villa:listVillas){
+                    System.out.println("\n========================");
+                    System.out.println("No "+i);
+                    System.out.println(villa.showInfor());
+                    System.out.println("\n========================");
+                }
+                System.out.println("Choose villa booking");
+                Villa villa=listVillas.get(sc.nextInt()-1);
+                customer.setServices(villa);
+                break;
+            default:
+                backToMenu();
+                break;
+        }
+        ArrayList<Customer> listBooking=FunctionWriteAndReadFileCSV.getBookingFromCSV();
+        listBooking.add(customer);
+        FunctionWriteAndReadFileCSV.writeBookingToCSV(listBooking);
+        System.out.println("\nAdd Booking for : " + customer.getNameCustomer() + " Successfully");
+        sc.nextLine();
+        backToMenu();
     }
 }
