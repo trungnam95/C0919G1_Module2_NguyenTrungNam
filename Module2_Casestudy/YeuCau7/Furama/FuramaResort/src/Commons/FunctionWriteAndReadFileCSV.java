@@ -1,9 +1,6 @@
 package Commons;
 
-import Models.Customer;
-import Models.House;
-import Models.Room;
-import Models.Villa;
+import Models.*;
 import com.opencsv.CSVWriter;
 import com.opencsv.bean.ColumnPositionMappingStrategy;
 import com.opencsv.bean.CsvToBean;
@@ -14,6 +11,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.TreeSet;
 
 public class FunctionWriteAndReadFileCSV {
     private static final char DEFAULT_SEPARATOR = ',';
@@ -262,30 +260,100 @@ public class FunctionWriteAndReadFileCSV {
         }
     }
 
-    public static ArrayList<Customer> getBookingFromCSV() {
-        Path path = Paths.get(pathBooking);
-        //kiem tra file co ton tai ko neu ko thi tao 1 file trong
-        if (!Files.exists(path)) {
+//    public static ArrayList<Customer> getBookingFromCSV() {
+//        Path path = Paths.get(pathBooking);
+//        //kiem tra file co ton tai ko neu ko thi tao 1 file trong
+//        if (!Files.exists(path)) {
+//            try {
+//                Writer write = new FileWriter(pathBooking);
+//            } catch (IOException ex) {
+//                System.out.println(ex.getMessage());
+//            }
+//        }
+//        ColumnPositionMappingStrategy<Customer> strategy = new ColumnPositionMappingStrategy<>();
+//        strategy.setType(Customer.class);
+//        strategy.setColumnMapping(headerRecordBooking);
+//        CsvToBean<Customer> csvToBean = null;
+//        try {
+//            csvToBean = new CsvToBeanBuilder<Customer>(new FileReader(pathBooking)).withMappingStrategy(strategy).
+//                    withSeparator(DEFAULT_SEPARATOR).
+//                    withQuoteChar(DEFAULT_QUOTE)
+//                    .withSkipLines(NUM_OF_LINE_SKIP)
+//                    .withIgnoreLeadingWhiteSpace(true)
+//                    .build();
+//        } catch (FileNotFoundException ex) {
+//            System.out.println(ex.getMessage());
+//        }
+//        return (ArrayList<Customer>) csvToBean.parse();
+//    }
+    public static TreeSet<String> getAllNameServiceFromCSV(String path){
+        BufferedReader br=null;
+        TreeSet<String> result=new TreeSet<>();
+        try {
+            String line;
+            br=new BufferedReader(new FileReader(path));
+            while (br.readLine()!=null){
+                line=br.readLine();
+                if(getNameServicesFromFile(line).equals("serviceName")){
+                    continue;
+                }
+                result.add(getNameServicesFromFile(line));
+            }
+        }catch (IOException ex){
+            System.out.println(ex.getMessage());
+
+        }
+        return result;
+    }
+    //get name with line data
+    public static String getNameServicesFromFile(String csvLine){
+        String name="";
+        if(csvLine!=null){
+            String[] splitData=csvLine.split(",");
+            name=splitData[0];
+        }
+        return name;
+    }
+    public static ArrayList<Customer>getBooking(){
+        ArrayList<Customer> listBooking=new ArrayList<>();
+        BufferedReader br = null;
+        try {
+            String line;
+            br = new BufferedReader(new FileReader(pathBooking));
+            // How to read file in java line by line?
+            while ((line = br.readLine()) != null) {
+
+                String[] data=line.split(",");
+                if(data[6].equals("emailCustomer"))
+                    continue;
+                Customer customer=new Customer();
+                Services villa=new Villa();
+                customer.setIDCustomer(data[0]);
+                customer.setNameCustomer(data[1]);
+                customer.setBirthday(data[2]);
+                customer.setGender(data[3]);
+                customer.setIdCard(data[4]);
+                customer.setPhoneNumber(data[5]);
+                customer.setEmailCustomer(data[6]);
+                customer.setTypeCustomer(data[7]);
+                customer.setAddress(data[8]);
+                villa.setServiceName(data[9]);
+                villa.setAreaUsed(Float.parseFloat(data[10]));
+                villa.setRentCost(Double.parseDouble(data[11]));
+                villa.setAmountPeople(Integer.parseInt(data[12]));
+                customer.setServices(villa);
+                listBooking.add(customer);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
             try {
-                Writer write = new FileWriter(pathBooking);
-            } catch (IOException ex) {
-                System.out.println(ex.getMessage());
+                if (br != null)
+                    br.close();
+            } catch (IOException crunchifyException) {
+                crunchifyException.printStackTrace();
             }
         }
-        ColumnPositionMappingStrategy<Customer> strategy = new ColumnPositionMappingStrategy<>();
-        strategy.setType(Customer.class);
-        strategy.setColumnMapping(headerRecordBooking);
-        CsvToBean<Customer> csvToBean = null;
-        try {
-            csvToBean = new CsvToBeanBuilder<Customer>(new FileReader(pathCustomer)).withMappingStrategy(strategy).
-                    withSeparator(DEFAULT_SEPARATOR).
-                    withQuoteChar(DEFAULT_QUOTE)
-                    .withSkipLines(NUM_OF_LINE_SKIP)
-                    .withIgnoreLeadingWhiteSpace(true)
-                    .build();
-        } catch (FileNotFoundException ex) {
-            System.out.println(ex.getMessage());
-        }
-        return (ArrayList<Customer>) csvToBean.parse();
+        return listBooking;
     }
 }

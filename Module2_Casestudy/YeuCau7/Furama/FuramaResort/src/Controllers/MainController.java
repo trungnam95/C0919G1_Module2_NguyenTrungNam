@@ -5,10 +5,10 @@ import Commons.FunctionWriteAndReadFileCSV;
 import Models.*;
 import com.sun.javafx.stage.FocusUngrabEvent;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Scanner;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.*;
 
 public class MainController {
     public static Scanner sc = new Scanner(System.in);
@@ -68,28 +68,28 @@ public class MainController {
         addNewService(villa);
         System.out.println("Enter room standard");
         ((Villa) villa).setStandardRoom(sc.nextLine());
-        while (!FuncValidation.checkNameServices(((Villa)villa).getStandardRoom())){
+        while (!FuncValidation.checkNameServices(((Villa) villa).getStandardRoom())) {
             System.out.println("Room standard is invalid.Please try again !");
             System.out.println("Enter room standard:");
-            ((Villa)villa).setStandardRoom(sc.nextLine());
+            ((Villa) villa).setStandardRoom(sc.nextLine());
         }
         System.out.println("Enter Description");
         ((Villa) villa).setComfortDescription(sc.nextLine());
-        content="Enter number of floor";
-        errMes="Number of floor is invalid (Number of floor >0 and must be a integer).please try again";
-        ((Villa)villa).setAmountFloors(FuncValidation.checkValidNumberInteger(content,errMes));
-        while (((Villa)villa).getAmountFloors()<=0){
+        content = "Enter number of floor";
+        errMes = "Number of floor is invalid (Number of floor >0 and must be a integer).please try again";
+        ((Villa) villa).setAmountFloors(FuncValidation.checkValidNumberInteger(content, errMes));
+        while (((Villa) villa).getAmountFloors() <= 0) {
             System.out.println(errMes);
-            ((Villa)villa).setAmountFloors(FuncValidation.checkValidNumberInteger(content,errMes));
+            ((Villa) villa).setAmountFloors(FuncValidation.checkValidNumberInteger(content, errMes));
         }
 //        System.out.println("Enter Amount Floors");
 //        ((Villa) villa).setAmountFloors(sc.nextLine());
-        content="Enter area pool";
-        errMes="area poll is invalid (Area >30 and must be a float).please try again";
-        ((Villa)villa).setPoolArea(FuncValidation.checkValidNumberFloat(content,errMes));
-        while (((Villa)villa).getPoolArea()<=30){
+        content = "Enter area pool";
+        errMes = "area poll is invalid (Area >30 and must be a float).please try again";
+        ((Villa) villa).setPoolArea(FuncValidation.checkValidNumberFloat(content, errMes));
+        while (((Villa) villa).getPoolArea() <= 30) {
             System.out.println(errMes);
-            ((Villa)villa).setPoolArea(FuncValidation.checkValidNumberFloat(content,errMes));
+            ((Villa) villa).setPoolArea(FuncValidation.checkValidNumberFloat(content, errMes));
         }
 
 //        System.out.println("Enter Pool Area");
@@ -155,7 +155,8 @@ public class MainController {
             case 3:
                 addNewCustomer();
                 break;
-            case 4:showInformationCustomers();
+            case 4:
+                showInformationCustomers();
                 displayMainMenu();
                 break;
             case 5:
@@ -202,8 +203,11 @@ public class MainController {
                 "\n1.Show All Villa." +
                 "\n2.Show All House." +
                 "\n3.Show All Room." +
-                "\n4.Back to Menu." +
-                "\n5.Exit.");
+                "\n4.Show All Name Villa Not Duplicate" +
+                "\n5.Show All Name House Not Duplicate" +
+                "\n6.Show All Name Room Not Duplicate" +
+                "\n7.Back to Menu." +
+                "\n8.Exit.");
         switch (sc.nextInt()) {
             case 1:
                 showAllVilla();
@@ -218,9 +222,21 @@ public class MainController {
                 displayMainMenu();
                 break;
             case 4:
+                showAllNameVillaNotDuplicate();
                 displayMainMenu();
                 break;
             case 5:
+//                showAllNameHouse();
+                displayMainMenu();
+                break;
+            case 6:
+//                showAllNameRoom();
+                displayMainMenu();
+                break;
+            case 7:
+                displayMainMenu();
+                break;
+            case 8:
                 System.exit(0);
             default:
                 System.out.println("Error");
@@ -256,57 +272,59 @@ public class MainController {
             System.out.println("\n=================");
         }
     }
-    private static void showInformationCustomers(){
+
+    private static void showInformationCustomers() {
         ArrayList<Customer> listCustomer = FunctionWriteAndReadFileCSV.getCustomerFromCSV();
         //sap xep theo alpha B
         listCustomer.sort(new SortName());
         for (Customer customer : listCustomer) {
             System.out.println("\n=================");
-            System.out.println(customer.showInforCustomer());
+            System.out.println(customer.showInfor());
             System.out.println("\n=================");
         }
     }
-    private static void addNewCustomer(){
-        sc.nextLine() ;
+
+    private static void addNewCustomer() {
+        sc.nextLine();
         System.out.println("==============Customer===========");
         ArrayList<Customer> oldList = FunctionWriteAndReadFileCSV.getCustomerFromCSV();
         Customer customer = new Customer();
         customer.setIDCustomer(java.util.UUID.randomUUID().toString().replace("-", ""));
         System.out.println("Enter name customer");
         customer.setNameCustomer(sc.nextLine());
-        while (!FuncValidation.checkNameServices(customer.getNameCustomer())){
+        while (!FuncValidation.checkNameServices(customer.getNameCustomer())) {
             System.out.println("Enter name customer is invalid please try again! ");
             customer.setNameCustomer(sc.nextLine());
         }
         System.out.println("Enter birthday customer");
         customer.setBirthday(sc.nextLine());
-        while (!FuncValidation.checkBirthday(customer.getBirthday())){
+        while (!FuncValidation.checkBirthday(customer.getBirthday())) {
             System.out.println("Enter birthday customer is invalid please try again!");
             customer.setBirthday(sc.nextLine());
         }
         System.out.println("Enter gender customer Male/Female/Unknow");
         customer.setGender(sc.nextLine());
 //        FuncValidation.checkType(customer.getGender());
-        while (!FuncValidation.checkGender(customer.getGender())){
+        while (!FuncValidation.checkGender(customer.getGender())) {
             System.out.println("Enter gender customer Male/Female/Unknow is invalid please try again!");
             customer.setGender(sc.nextLine());
         }
         System.out.println("Enter id card customer");
         customer.setIdCard(sc.nextLine());
-        while (!FuncValidation.checkIDCard(customer.getIdCard())){
+        while (!FuncValidation.checkIDCard(customer.getIdCard())) {
             System.out.println("Enter id card customer is invalid please try again!");
             customer.setIdCard(sc.nextLine());
         }
         System.out.println("Enter phone number");
         customer.setPhoneNumber(sc.nextLine());
-        while(!FuncValidation.checkPhoneNumber(customer.getPhoneNumber())){
+        while (!FuncValidation.checkPhoneNumber(customer.getPhoneNumber())) {
             System.out.println("Enter phone number is invalid please try again!");
             customer.setPhoneNumber(sc.nextLine());
         }
 //        sc.nextLine() ;
         System.out.println("Enter email customer");
         customer.setEmailCustomer(sc.nextLine());
-        while (!FuncValidation.checkEmail(customer.getEmailCustomer())){
+        while (!FuncValidation.checkEmail(customer.getEmailCustomer())) {
             System.out.println("Enter email customer is invalid please try again!");
             customer.setEmailCustomer(sc.nextLine());
         }
@@ -320,47 +338,69 @@ public class MainController {
 //        sc.nextLine();
         backToMenu();
     }
-    private static void addNewBookingResort(){
-        ArrayList<Customer> listCustomers=FunctionWriteAndReadFileCSV.getCustomerFromCSV();
+
+    private static void addNewBookingResort() {
+        ArrayList<Customer> listCustomers = FunctionWriteAndReadFileCSV.getCustomerFromCSV();
         //sap xep
         listCustomers.sort(new SortName());
-        int i=1;
-        for (Customer cus:listCustomers){
+        int i = 1;
+        for (Customer cus : listCustomers) {
             System.out.println("\n========================");
-            System.out.println("No "+i);
-            System.out.println(cus.showInforCustomer());
+            System.out.println("No " + i);
+            System.out.println(cus.showInfor());
             System.out.println("\n========================");
             i++;
         }
         System.out.println("Choose customer booking");
-        Customer customer=listCustomers.get(sc.nextInt()-1);
+        Customer customer = listCustomers.get(sc.nextInt() - 1);
         System.out.println("\n1.Booking Villa");
         System.out.println("\n2.Booking House");
         System.out.println("\n3.Booking Room");
         System.out.println("\nChoose service booking");
-        int choose=sc.nextInt();
-        switch (choose){
+        int choose = sc.nextInt();
+        switch (choose) {
             case 1:
-                i=1;
-                ArrayList<Villa> listVillas=FunctionWriteAndReadFileCSV.getVillaFromCSV();
-                for (Villa villa:listVillas){
+                i = 1;
+                ArrayList<Villa> listVillas = FunctionWriteAndReadFileCSV.getVillaFromCSV();
+                for (Villa villa : listVillas) {
                     System.out.println("\n========================");
-                    System.out.println("No "+i);
+                    System.out.println("No " + i);
                     System.out.println(villa.showInfor());
                     System.out.println("\n========================");
+                    i++;
                 }
                 System.out.println("Choose villa booking");
-                Villa villa=listVillas.get(sc.nextInt()-1);
+                Villa villa = listVillas.get(sc.nextInt() - 1);
                 customer.setServices(villa);
                 break;
             default:
                 backToMenu();
                 break;
         }
-        ArrayList<Customer> listBooking=FunctionWriteAndReadFileCSV.getBookingFromCSV();
+//        oldList.add(customer);
+//        FunctionWriteAndReadFileCSV.writeCustomerToCSV(oldList);
+        ArrayList<Customer> listBooking = FunctionWriteAndReadFileCSV.getBooking();
         listBooking.add(customer);
+//        System.out.println(listBooking.get(0).getServices().getServiceName());
         FunctionWriteAndReadFileCSV.writeBookingToCSV(listBooking);
         System.out.println("\nAdd Booking for : " + customer.getNameCustomer() + " Successfully");
+        sc.nextLine();
+        backToMenu();
+    }
+    private static void showAllNameVillaNotDuplicate(){
+        String pathVilla="src/Data/Villa.csv";
+        Path path= Paths.get(pathVilla);
+        if (!Files.exists(path)){
+            System.out.println("File Villa does not exit");
+        }else {
+            TreeSet<String> listVillaTreeSet=FunctionWriteAndReadFileCSV.getAllNameServiceFromCSV(pathVilla);
+            System.out.println("======List Villa Name Service Not Duplicate");
+            for (String str:listVillaTreeSet){
+                System.out.println("\n===========");
+                System.out.println(str);
+                System.out.println("\n===========");
+            }
+        }
         sc.nextLine();
         backToMenu();
     }

@@ -1,0 +1,7 @@
+IDCustomer,nameCustomer,birthday,gender,idCard,phoneNumber,emailCustomer,typeCustomer,address,serviceName,areaUsed,rentCost,amountPeople
+1396dac7f4bc4492b1a36085e210709b,Ang,10/10/1999,Male,987654321,0905194471,jbajsdasd@gmail.com,vip,ltt,tom,0.0,0.0,0
+0581bb4f8e764b5da8bae80813e5865e,An,30/02/1995,nam,123456789,123,nguyen@gmail.com,vip,ltt,ok,0.0,0.0,0
+1396dac7f4bc4492b1a36085e210709b,Ang,10/10/1999,Male,987654321,0905194471,jbajsdasd@gmail.com,vip,ltt,hung,1.0,1.0,1
+4c54e7d6f8f442e586c576a9aea11eb0,Ni,10/10/1992,Unknow,987654321,0905194471,akjsdnasjkd@gmail.com,vip,hsk,Tin,31.0,1.0,1
+4c54e7d6f8f442e586c576a9aea11eb0,Ni,10/10/1992,Unknow,987654321,0905194471,akjsdnasjkd@gmail.com,vip,hsk,Tin,31.0,1.0,1
+0581bb4f8e764b5da8bae80813e5865e,Nga,30/02/1995,nam,123456789,123,nguyen@gmail.com,vip,ltt,ok,2.0,2.0,2

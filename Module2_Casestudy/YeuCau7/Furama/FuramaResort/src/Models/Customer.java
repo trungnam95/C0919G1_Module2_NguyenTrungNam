@@ -107,8 +107,7 @@ public class Customer {
     public void setServices(Services services) {
         this.services = services;
     }
-
-    public String showInforCustomer() {
+    public String showInfor() {
         return
                 "\nIDCustomer: " + IDCustomer +
                 "\nnameCustomer: " + nameCustomer +
