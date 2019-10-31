@@ -120,6 +120,4 @@ public class Customer {
                 "\naddress: " + address;
 
     }
-
-
 }

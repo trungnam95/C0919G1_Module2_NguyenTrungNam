@@ -143,7 +143,8 @@ public class MainController {
         System.out.println("3.Add new customer");
         System.out.println("4.Show information customer");
         System.out.println("5.Add new booking resort");
-        System.out.println("6.Exit");
+        System.out.println("6.Show information employee");
+        System.out.println("7.Exit");
         int input = sc.nextInt();
         switch (input) {
             case 1:
@@ -163,6 +164,9 @@ public class MainController {
                 addNewBookingResort();
                 break;
             case 6:
+                showInforEmploy();
+                break;
+            case 7:
                 System.exit(0);
             default:
                 System.out.println("false");
@@ -387,15 +391,16 @@ public class MainController {
         sc.nextLine();
         backToMenu();
     }
-    private static void showAllNameVillaNotDuplicate(){
-        String pathVilla="src/Data/Villa.csv";
-        Path path= Paths.get(pathVilla);
-        if (!Files.exists(path)){
+
+    private static void showAllNameVillaNotDuplicate() {
+        String pathVilla = "src/Data/Villa.csv";
+        Path path = Paths.get(pathVilla);
+        if (!Files.exists(path)) {
             System.out.println("File Villa does not exit");
-        }else {
-            TreeSet<String> listVillaTreeSet=FunctionWriteAndReadFileCSV.getAllNameServiceFromCSV(pathVilla);
+        } else {
+            TreeSet<String> listVillaTreeSet = FunctionWriteAndReadFileCSV.getAllNameServiceFromCSV(pathVilla);
             System.out.println("======List Villa Name Service Not Duplicate");
-            for (String str:listVillaTreeSet){
+            for (String str : listVillaTreeSet) {
                 System.out.println("\n===========");
                 System.out.println(str);
                 System.out.println("\n===========");
@@ -403,5 +408,38 @@ public class MainController {
         }
         sc.nextLine();
         backToMenu();
+    }
+
+    private static Map<Integer, Employee> creatListEmployeeToMap() {
+        Employee employee = new Employee("nguyen van A", 25, "da nang", 1);
+        Employee employee1 = new Employee("nguyen van B", 21, "HCM", 2);
+        Employee employee2 = new Employee("nguyen van C", 25, "Hue", 3);
+        Employee employee3 = new Employee("nguyen van D", 21, "Nghe an", 4);
+        Employee employee4 = new Employee("nguyen van E", 25, "Yen bai", 5);
+        Employee employee5 = new Employee("nguyen van F", 21, "Ha noi", 6);
+        Employee employee6= new Employee("nguyen van G", 25, "Thai binh", 7);
+        Employee employee7 = new Employee("nguyen van H", 21, "Dong nai", 8);
+        Employee employee8= new Employee("nguyen van J", 25, "Da lat", 9);
+        Employee employee9 = new Employee("nguyen van K", 21, "Quang nam", 10);
+        Map<Integer, Employee> map = new HashMap<Integer, Employee>();
+        map.put(employee.getcodeEmployee(), employee);
+        map.put(employee1.getcodeEmployee(), employee1);
+        map.put(employee2.getcodeEmployee(), employee2);
+        map.put(employee3.getcodeEmployee(), employee3);
+        map.put(employee4.getcodeEmployee(), employee4);
+        map.put(employee5.getcodeEmployee(), employee5);
+        map.put(employee6.getcodeEmployee(), employee6);
+        map.put(employee7.getcodeEmployee(), employee7);
+        map.put(employee8.getcodeEmployee(), employee8);
+        map.put(employee9.getcodeEmployee(), employee9);
+        return map;
+    }
+
+    private static void showInforEmploy() {
+        Map<Integer, Employee> map = creatListEmployeeToMap();
+        Set<Integer> set = map.keySet();
+        for (Integer key : set) {
+            System.out.println(map.get(key));
+        }
     }
 }
