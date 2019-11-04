@@ -12,6 +12,7 @@ import java.util.*;
 
 public class MainController {
     public static Scanner sc = new Scanner(System.in);
+    private static Queue<Customer> customerQueue = new LinkedList<Customer>();
     MainController mainController = new MainController();
 
     private static Services addNewService(Services services) {
@@ -21,7 +22,7 @@ public class MainController {
         System.out.println("Enter Name Service");
         services.setServiceName(sc.nextLine());
         while (!FuncValidation.checkNameServices(services.getServiceName())) {
-            System.out.println("Enter Name Service");
+            System.out.println("Enter Name Service is valid please try again!");
             services.setServiceName(sc.nextLine());
         }
         //Enter Area Used
@@ -48,7 +49,13 @@ public class MainController {
             System.out.println(errMes);
             services.setAmountPeople(FuncValidation.checkValidNumberInteger(content, errMes));
         }
-
+        System.out.println("Enter Type Rent");
+        services.setTypeRent(sc.nextLine());
+        while (!FuncValidation.checkTypeRent(services.getTypeRent())) {
+            System.out.println("Enter Type Rent is Day,Month or Year");
+            services.setTypeRent(sc.nextLine());
+        }
+        services.setID(java.util.UUID.randomUUID().toString().replace("-", ""));
         return services;
     }
 
@@ -103,16 +110,27 @@ public class MainController {
 
     private static void addServiceHouse() {
         System.out.println("==============House===========");
+        String content = "";
+        String errMes = "";
         ArrayList<House> oldList = FunctionWriteAndReadFileCSV.getHouseFromCSV();
         Services house = new House();
         addNewService(house);
-        sc.nextLine();
         System.out.println("Enter room standard");
         ((House) house).setStandardRoom(sc.nextLine());
+        while (!FuncValidation.checkNameServices(((House) house).getStandardRoom())) {
+            System.out.println("Room standard is invalid.Please try again !");
+            System.out.println("Enter room standard:");
+            ((House) house).setStandardRoom(sc.nextLine());
+        }
         System.out.println("Enter Description");
         ((House) house).setComfortDescription(sc.nextLine());
-        System.out.println("Enter Amount Floors");
-        ((House) house).setAmountFloors(sc.nextInt());
+        content = "Enter number of floor";
+        errMes = "Number of floor is invalid (Number of floor >0 and must be a integer).please try again";
+        ((House) house).setAmountFloors(FuncValidation.checkValidNumberInteger(content, errMes));
+        while (((House) house).getAmountFloors() <= 0) {
+            System.out.println(errMes);
+            ((House) house).setAmountFloors(FuncValidation.checkValidNumberInteger(content, errMes));
+        }
 //        ArrayList<Villa> listVilla = new ArrayList<Villa>();
         oldList.add((House) house);
         FunctionWriteAndReadFileCSV.writeHouseToCSV(oldList);
@@ -126,13 +144,17 @@ public class MainController {
         ArrayList<Room> oldList = FunctionWriteAndReadFileCSV.getRoomFromCSV();
         Services room = new Room();
         addNewService(room);
-        sc.nextLine();
-        System.out.println("Enter room standard");
+        System.out.println("Enter Service Free");
         ((Room) room).setServiceFree(sc.nextLine());
+        while (!FuncValidation.checkServiceFree(((Room) room).getServiceFree())) {
+            System.out.println("Service free is:Karaoke,Massage or Food.Please try again !");
+            System.out.println("Enter room standard:");
+            ((Room) room).setServiceFree(sc.nextLine());
+        }
 //        ArrayList<Villa> listVilla = new ArrayList<Villa>();
         oldList.add((Room) room);
         FunctionWriteAndReadFileCSV.writeRoomToCSV(oldList);
-        System.out.println("\nAdd Villa: " + room.getServiceName() + " Successfully");
+        System.out.println("\nAdd Room: " + room.getServiceName() + " Successfully");
 //        sc.nextLine();
         backToMenu();
     }
@@ -144,33 +166,43 @@ public class MainController {
         System.out.println("4.Show information customer");
         System.out.println("5.Add new booking resort");
         System.out.println("6.Show information employee");
-        System.out.println("7.Exit");
-        int input = sc.nextInt();
+        System.out.println("7.Add customer ticket");
+        System.out.println("8.show customer ticket");
+        System.out.println("9.Exit");
+        String input = sc.nextLine();
         switch (input) {
-            case 1:
+            case "1":
                 addNewServices();
                 break;
-            case 2:
+            case "2":
                 showServices();
                 break;
-            case 3:
+            case "3":
                 addNewCustomer();
                 break;
-            case 4:
+            case "4":
                 showInformationCustomers();
                 displayMainMenu();
                 break;
-            case 5:
+            case "5":
                 addNewBookingResort();
                 break;
-            case 6:
+            case "6":
                 showInforEmploy();
+                displayMainMenu();
                 break;
-            case 7:
+            case "7":
+                addBookingTicket();
+                break;
+            case "8":
+                displayBookTicket();
+                displayMainMenu();
+                break;
+            case "9":
                 System.exit(0);
             default:
                 System.out.println("false");
-                break;
+                backToMenu();
         }
     }
 
@@ -180,21 +212,21 @@ public class MainController {
         System.out.println("3.Add new Room");
         System.out.println("4.Back to menu");
         System.out.println("5.Exit");
-        int input = sc.nextInt();
+        String input = sc.nextLine();
         switch (input) {
-            case 1:
+            case "1":
                 addServiceVilla();
                 break;
-            case 2:
+            case "2":
                 addServiceHouse();
                 break;
-            case 3:
+            case "3":
                 addServiceRoom();
                 break;
-            case 4:
+            case "4":
                 displayMainMenu();
                 break;
-            case 5:
+            case "5":
                 System.exit(0);
             default:
                 System.out.println("false");
@@ -212,35 +244,35 @@ public class MainController {
                 "\n6.Show All Name Room Not Duplicate" +
                 "\n7.Back to Menu." +
                 "\n8.Exit.");
-        switch (sc.nextInt()) {
-            case 1:
+        switch (sc.nextLine()) {
+            case "1":
                 showAllVilla();
                 displayMainMenu();
                 break;
-            case 2:
+            case "2":
                 showAllHouse();
                 displayMainMenu();
                 break;
-            case 3:
+            case "3":
                 showAllRoom();
                 displayMainMenu();
                 break;
-            case 4:
+            case "4":
                 showAllNameVillaNotDuplicate();
                 displayMainMenu();
                 break;
-            case 5:
-//                showAllNameHouse();
+            case "5":
+                showAllNameHouseNotDuplicate();
                 displayMainMenu();
                 break;
-            case 6:
-//                showAllNameRoom();
+            case "6":
+                showAllNameRoomNotDuplicate();
                 displayMainMenu();
                 break;
-            case 7:
+            case "7":
                 displayMainMenu();
                 break;
-            case 8:
+            case "8":
                 System.exit(0);
             default:
                 System.out.println("Error");
@@ -344,27 +376,35 @@ public class MainController {
     }
 
     private static void addNewBookingResort() {
-        ArrayList<Customer> listCustomers = FunctionWriteAndReadFileCSV.getCustomerFromCSV();
-        //sap xep
-        listCustomers.sort(new SortName());
-        int i = 1;
-        for (Customer cus : listCustomers) {
-            System.out.println("\n========================");
-            System.out.println("No " + i);
-            System.out.println(cus.showInfor());
-            System.out.println("\n========================");
-            i++;
+        try {
+            ArrayList<Customer> listCustomers = FunctionWriteAndReadFileCSV.getCustomerFromCSV();
+            //sap xep
+            listCustomers.sort(new SortName());
+            int i = 1;
+            for (Customer cus : listCustomers) {
+                System.out.println("\n========================");
+                System.out.println("No " + i);
+                System.out.println(cus.showInfor());
+                System.out.println("\n========================");
+                i++;
+            }
+            System.out.println("Choose customer booking");
+            Customer customer= listCustomers.get(sc.nextInt() - 1);
+        } catch (Exception ex) {
+            System.out.println("Error");
+            addNewBookingResort();
         }
-        System.out.println("Choose customer booking");
-        Customer customer = listCustomers.get(sc.nextInt() - 1);
+        ArrayList<Customer> listCustomers = FunctionWriteAndReadFileCSV.getCustomerFromCSV();
+        Customer customer= listCustomers.get(sc.nextInt() - 1);
         System.out.println("\n1.Booking Villa");
         System.out.println("\n2.Booking House");
         System.out.println("\n3.Booking Room");
         System.out.println("\nChoose service booking");
-        int choose = sc.nextInt();
+        sc.nextLine();
+        String choose = sc.nextLine();
         switch (choose) {
-            case 1:
-                i = 1;
+            case "1":
+                int i = 1;
                 ArrayList<Villa> listVillas = FunctionWriteAndReadFileCSV.getVillaFromCSV();
                 for (Villa villa : listVillas) {
                     System.out.println("\n========================");
@@ -376,6 +416,34 @@ public class MainController {
                 System.out.println("Choose villa booking");
                 Villa villa = listVillas.get(sc.nextInt() - 1);
                 customer.setServices(villa);
+                break;
+            case "2":
+                i = 1;
+                ArrayList<House> listHouses = FunctionWriteAndReadFileCSV.getHouseFromCSV();
+                for (House house : listHouses) {
+                    System.out.println("\n========================");
+                    System.out.println("No " + i);
+                    System.out.println(house.showInfor());
+                    System.out.println("\n========================");
+                    i++;
+                }
+                System.out.println("Choose House booking");
+                House house = listHouses.get(sc.nextInt() - 1);
+                customer.setServices(house);
+                break;
+            case "3":
+                i = 1;
+                ArrayList<Room> listRooms = FunctionWriteAndReadFileCSV.getRoomFromCSV();
+                for (Room room : listRooms) {
+                    System.out.println("\n========================");
+                    System.out.println("No " + i);
+                    System.out.println(room.showInfor());
+                    System.out.println("\n========================");
+                    i++;
+                }
+                System.out.println("Choose Room booking");
+                Room room = listRooms.get(sc.nextInt() - 1);
+                customer.setServices(room);
                 break;
             default:
                 backToMenu();
@@ -393,6 +461,7 @@ public class MainController {
     }
 
     private static void showAllNameVillaNotDuplicate() {
+        sc.nextLine();
         String pathVilla = "src/Data/Villa.csv";
         Path path = Paths.get(pathVilla);
         if (!Files.exists(path)) {
@@ -401,25 +470,57 @@ public class MainController {
             TreeSet<String> listVillaTreeSet = FunctionWriteAndReadFileCSV.getAllNameServiceFromCSV(pathVilla);
             System.out.println("======List Villa Name Service Not Duplicate");
             for (String str : listVillaTreeSet) {
-                System.out.println("\n===========");
                 System.out.println(str);
                 System.out.println("\n===========");
             }
         }
-        sc.nextLine();
         backToMenu();
     }
 
-    private static Map<Integer, Employee> creatListEmployeeToMap() {
+    private static void showAllNameHouseNotDuplicate() {
+        sc.nextLine();
+        String pathHouse = "src/Data/House.csv";
+        Path path = Paths.get(pathHouse);
+        if (!Files.exists(path)) {
+            System.out.println("File House does not exit");
+        } else {
+            TreeSet<String> listHouseTreeSet = FunctionWriteAndReadFileCSV.getAllNameServiceFromCSV(pathHouse);
+            System.out.println("======List House Name Service Not Duplicate");
+            for (String str : listHouseTreeSet) {
+                System.out.println(str);
+                System.out.println("\n===========");
+            }
+        }
+        backToMenu();
+    }
+
+    private static void showAllNameRoomNotDuplicate() {
+        sc.nextLine();
+        String pathRoom = "src/Data/Room.csv";
+        Path path = Paths.get(pathRoom);
+        if (!Files.exists(path)) {
+            System.out.println("File Room does not exit");
+        } else {
+            TreeSet<String> listRoomTreeSet = FunctionWriteAndReadFileCSV.getAllNameServiceFromCSV(pathRoom);
+            System.out.println("======List Room Name Service Not Duplicate");
+            for (String str : listRoomTreeSet) {
+                System.out.println(str);
+                System.out.println("\n===========");
+            }
+        }
+        backToMenu();
+    }
+
+    public static Map<Integer, Employee> creatListEmployeeToMap() {
         Employee employee = new Employee("nguyen van A", 25, "da nang", 1);
         Employee employee1 = new Employee("nguyen van B", 21, "HCM", 2);
         Employee employee2 = new Employee("nguyen van C", 25, "Hue", 3);
         Employee employee3 = new Employee("nguyen van D", 21, "Nghe an", 4);
         Employee employee4 = new Employee("nguyen van E", 25, "Yen bai", 5);
         Employee employee5 = new Employee("nguyen van F", 21, "Ha noi", 6);
-        Employee employee6= new Employee("nguyen van G", 25, "Thai binh", 7);
+        Employee employee6 = new Employee("nguyen van G", 25, "Thai binh", 7);
         Employee employee7 = new Employee("nguyen van H", 21, "Dong nai", 8);
-        Employee employee8= new Employee("nguyen van J", 25, "Da lat", 9);
+        Employee employee8 = new Employee("nguyen van J", 25, "Da lat", 9);
         Employee employee9 = new Employee("nguyen van K", 21, "Quang nam", 10);
         Map<Integer, Employee> map = new HashMap<Integer, Employee>();
         map.put(employee.getcodeEmployee(), employee);
@@ -440,6 +541,37 @@ public class MainController {
         Set<Integer> set = map.keySet();
         for (Integer key : set) {
             System.out.println(map.get(key));
+        }
+    }
+
+    private static void addBookingTicket() {
+        try {
+            ArrayList<Customer> listCustomers = FunctionWriteAndReadFileCSV.getCustomerFromCSV();
+            //sap xep
+            listCustomers.sort(new SortName());
+            int i = 1;
+            for (Customer cus : listCustomers) {
+                System.out.println("\n========================");
+                System.out.println("No " + i);
+                System.out.println(cus.showInfor());
+                System.out.println("\n========================");
+                i++;
+            }
+            System.out.println("choose customer to book");
+            Customer customer = listCustomers.get(sc.nextInt() - 1);
+            customerQueue.add(customer);
+            sc.nextLine();
+            backToMenu();
+        } catch (Exception ex) {
+            System.out.println("Error!");
+            sc.nextLine();
+            addBookingTicket();
+        }
+    }
+
+    private static void displayBookTicket() {
+        for (Customer cus : customerQueue) {
+            System.out.println(cus.showInfor());
         }
     }
 }

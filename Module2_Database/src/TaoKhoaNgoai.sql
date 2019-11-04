@@ -21,7 +21,3 @@ CREATE TABLE orders(
     staff varchar(100),
 	customer_id INT REFERENCES customers(id)
 );
-
-
-
-

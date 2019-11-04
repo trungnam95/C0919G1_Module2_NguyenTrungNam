@@ -5,14 +5,16 @@ public abstract class Services {
     private double areaUsed;
     private double rentCost;
     private int amountPeople;
-//    protected TypeRent typeRent;//HAS -A
+    private String typeRent;
+    private String ID;
 
-    public Services(String serviceName, double areaUsed, double rentCost, int amountPeople) {
+    public Services(String serviceName, double areaUsed, double rentCost, int amountPeople,String typeRent,String ID) {
         this.serviceName = serviceName;
         this.areaUsed = areaUsed;
         this.rentCost = rentCost;
         this.amountPeople = amountPeople;
-//        this.typeRent = typeRent;
+        this.typeRent = typeRent;
+        this.ID=ID;
     }
 
     public Services() {
@@ -50,15 +52,22 @@ public abstract class Services {
         this.amountPeople = amountPeople;
     }
 
-//    public TypeRent getTypeRent() {
-//        return typeRent;
-//    }
-//
-//    public void setTypeRent(TypeRent typeRent) {
-//        this.typeRent = typeRent;
-//    }
+    public String getTypeRent() {
+        return typeRent;
+    }
 
-//    @Override
+    public void setTypeRent( String typeRent) {
+        this.typeRent = typeRent;
+    }
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
+    }
+    //    @Override
 //    public String toString() {
 //        return
 //                "\nserviceName='" + serviceName +

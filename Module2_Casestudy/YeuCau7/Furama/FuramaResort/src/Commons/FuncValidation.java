@@ -29,6 +29,14 @@ public class FuncValidation {
         regex="Female\\b|Male\\b|Unknow\\b";
         return str.matches(regex);
     }
+    public static boolean checkTypeRent(String str){
+        regex="Day\\b|Month\\b|Year\\b";
+        return str.matches(regex);
+    }
+    public static boolean checkServiceFree(String str){
+        regex="Massage\\b|Karaoke\\b|Food\\b";
+        return str.matches(regex);
+    }
     public static double checkValidNumberDouble(String content,String errmess){
         while (true){
             try {

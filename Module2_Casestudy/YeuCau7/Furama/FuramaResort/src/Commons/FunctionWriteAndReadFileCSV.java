@@ -22,11 +22,11 @@ public class FunctionWriteAndReadFileCSV {
     private static final String pathCustomer = "src/Data/Customer.csv";
     private static final String pathBooking = "src/Data/Booking.csv";
     private static String[] headerRecordVilla = new String[]{"serviceName", "areaUsed", "rentCost", "amountPeople",
-            "standardRoom", "comfortDescription", "amountFloors", "poolArea"};
+            "typeRent","ID","standardRoom", "comfortDescription", "amountFloors", "poolArea"};
     private static String[] headerRecordHouse = new String[]{"serviceName", "areaUsed", "rentCost", "amountPeople",
-            "standardRoom", "comfortDescription", "amountFloors"};
+            "typeRent","ID","standardRoom", "comfortDescription", "amountFloors"};
     private static String[] headerRecordRoom = new String[]{"serviceName", "areaUsed", "rentCost", "amountPeople",
-            "serviceFree"};
+            "typeRent","ID","serviceFree"};
     private static String[] headerRecordCustomer = new String[]{"IDCustomer", "nameCustomer", "birthday", "gender",
             "idCard", "phoneNumber", "emailCustomer", "typeCustomer", "address"};
     private static String[] headerRecordBooking = new String[]{"IDCustomer", "nameCustomer", "birthday", "gender",
@@ -47,6 +47,8 @@ public class FunctionWriteAndReadFileCSV {
                         String.valueOf(villa.getAreaUsed()),
                         String.valueOf(villa.getRentCost()),
                         String.valueOf(villa.getAmountPeople()),
+                        villa.getTypeRent(),
+                        villa.getID(),
                         villa.getStandardRoom(),
                         villa.getComfortDescription(),
                         String.valueOf(villa.getAmountFloors()),
@@ -97,6 +99,8 @@ public class FunctionWriteAndReadFileCSV {
                         String.valueOf(house.getAreaUsed()),
                         String.valueOf(house.getRentCost()),
                         String.valueOf(house.getAmountPeople()),
+                        house.getTypeRent(),
+                        house.getID(),
                         house.getStandardRoom(),
                         house.getComfortDescription(),
                         String.valueOf(house.getAmountFloors()),
@@ -145,6 +149,8 @@ public class FunctionWriteAndReadFileCSV {
                         String.valueOf(room.getAreaUsed()),
                         String.valueOf(room.getRentCost()),
                         String.valueOf(room.getAmountPeople()),
+                        room.getTypeRent(),
+                        room.getID(),
                         String.valueOf(room.getServiceFree()),
                 });
             }
