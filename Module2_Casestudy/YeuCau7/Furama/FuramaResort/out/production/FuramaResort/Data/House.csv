@@ -1,3 +1,3 @@
 serviceName,areaUsed,rentCost,amountPeople,typeRent,ID,standardRoom,comfortDescription,amountFloors
-Tom,34.0,12.0,1,day,9f0332fa0dfc49c783446786f300e759,ok,Tot,12
-Tom,31.0,12.0,2,Day,2ddeafd4568f4d839fc4c253799565f3,Tot,a,12
+Nam,34.0,12.0,2,Month,25d0591dd8db4a4c86d72bb540015770,On,tot,34
+Nam,98.0,12.0,1,Month,ae8700a033db4f108c309081946ee5e4,Tam,12,9

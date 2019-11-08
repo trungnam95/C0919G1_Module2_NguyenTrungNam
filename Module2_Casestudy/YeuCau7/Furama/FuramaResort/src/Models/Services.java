@@ -7,7 +7,6 @@ public abstract class Services {
     private int amountPeople;
     private String typeRent;
     private String ID;
-
     public Services(String serviceName, double areaUsed, double rentCost, int amountPeople,String typeRent,String ID) {
         this.serviceName = serviceName;
         this.areaUsed = areaUsed;

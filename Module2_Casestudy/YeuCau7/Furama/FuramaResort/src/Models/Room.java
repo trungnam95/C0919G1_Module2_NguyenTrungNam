@@ -30,9 +30,8 @@ public class Room extends Services {
 //                '}';
 //    }
 
-    @Override
     public String showInfor() {
-        return    "\nService name: " + super.getServiceName() +
+        return  "\nService name: " + super.getServiceName() +
                 "\nArea Used: " + super.getAreaUsed() +
                 "\nRent Cost: " + super.getRentCost() +
                 "\nAmount People: "+super.getAmountPeople()+

@@ -151,7 +151,7 @@ public class FunctionWriteAndReadFileCSV {
                         String.valueOf(room.getAmountPeople()),
                         room.getTypeRent(),
                         room.getID(),
-                        String.valueOf(room.getServiceFree()),
+                       room.getServiceFree(),
                 });
             }
 

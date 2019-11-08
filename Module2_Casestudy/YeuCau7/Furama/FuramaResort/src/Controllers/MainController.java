@@ -16,7 +16,6 @@ public class MainController {
     MainController mainController = new MainController();
 
     private static Services addNewService(Services services) {
-        sc.nextLine();
         String content = "";
         String errMes = "";
         System.out.println("Enter Name Service");
@@ -168,7 +167,8 @@ public class MainController {
         System.out.println("6.Show information employee");
         System.out.println("7.Add customer ticket");
         System.out.println("8.show customer ticket");
-        System.out.println("9.Exit");
+        System.out.println("9.search Employee");
+        System.out.println("10.Exit");
         String input = sc.nextLine();
         switch (input) {
             case "1":
@@ -199,6 +199,10 @@ public class MainController {
                 displayMainMenu();
                 break;
             case "9":
+                searchEmployee();
+                backToMenu();
+                break;
+            case "10":
                 System.exit(0);
             default:
                 System.out.println("false");
@@ -321,7 +325,6 @@ public class MainController {
     }
 
     private static void addNewCustomer() {
-        sc.nextLine();
         System.out.println("==============Customer===========");
         ArrayList<Customer> oldList = FunctionWriteAndReadFileCSV.getCustomerFromCSV();
         Customer customer = new Customer();
@@ -335,20 +338,20 @@ public class MainController {
         System.out.println("Enter birthday customer");
         customer.setBirthday(sc.nextLine());
         while (!FuncValidation.checkBirthday(customer.getBirthday())) {
-            System.out.println("Enter birthday customer is invalid please try again!");
+            System.out.println("Enter birthday customer follow dd/mm/yy please try again!");
             customer.setBirthday(sc.nextLine());
         }
         System.out.println("Enter gender customer Male/Female/Unknow");
         customer.setGender(sc.nextLine());
 //        FuncValidation.checkType(customer.getGender());
         while (!FuncValidation.checkGender(customer.getGender())) {
-            System.out.println("Enter gender customer Male/Female/Unknow is invalid please try again!");
+            System.out.println("Enter gender customer Male/Female/Unknow please try again!");
             customer.setGender(sc.nextLine());
         }
         System.out.println("Enter id card customer");
         customer.setIdCard(sc.nextLine());
         while (!FuncValidation.checkIDCard(customer.getIdCard())) {
-            System.out.println("Enter id card customer is invalid please try again!");
+            System.out.println("Enter id card customer is have 9 digits please try again!");
             customer.setIdCard(sc.nextLine());
         }
         System.out.println("Enter phone number");
@@ -461,7 +464,6 @@ public class MainController {
     }
 
     private static void showAllNameVillaNotDuplicate() {
-        sc.nextLine();
         String pathVilla = "src/Data/Villa.csv";
         Path path = Paths.get(pathVilla);
         if (!Files.exists(path)) {
@@ -478,7 +480,6 @@ public class MainController {
     }
 
     private static void showAllNameHouseNotDuplicate() {
-        sc.nextLine();
         String pathHouse = "src/Data/House.csv";
         Path path = Paths.get(pathHouse);
         if (!Files.exists(path)) {
@@ -495,7 +496,6 @@ public class MainController {
     }
 
     private static void showAllNameRoomNotDuplicate() {
-        sc.nextLine();
         String pathRoom = "src/Data/Room.csv";
         Path path = Paths.get(pathRoom);
         if (!Files.exists(path)) {
@@ -573,5 +573,48 @@ public class MainController {
         for (Customer cus : customerQueue) {
             System.out.println(cus.showInfor());
         }
+    }
+    private static void searchEmployee(){
+        Stack<Employee> stackEmployee = addTuHoSo();
+        System.out.print("Enter name employee: ");
+        String code = sc.nextLine();
+        try {
+            while (true) {
+                if (!stackEmployee.peek().getNameEmployee().equals(code)) {
+                    stackEmployee.pop();
+                } else {
+                    System.out.println(stackEmployee.peek().toString());
+                    break;
+                }
+            }
+        } catch (EmptyStackException ex) {
+            System.out.print("false\n");
+        }
+    }
+
+    public static Stack<Employee> addTuHoSo() {
+        Employee employee = new Employee("nguyen van A", 25, "da nang", 1);
+        Employee employee1 = new Employee("nguyen van B", 21, "HCM", 2);
+        Employee employee2 = new Employee("nguyen van C", 25, "Hue", 3);
+        Employee employee3 = new Employee("nguyen van D", 21, "Nghe an", 4);
+        Employee employee4 = new Employee("nguyen van E", 25, "Yen bai", 5);
+        Employee employee5 = new Employee("nguyen van F", 21, "Ha noi", 6);
+        Employee employee6= new Employee("nguyen van G", 25, "Thai binh", 7);
+        Employee employee7 = new Employee("nguyen van H", 21, "Dong nai", 8);
+        Employee employee8= new Employee("nguyen van J", 25, "Da lat", 9);
+        Employee employee9 = new Employee("nguyen van K", 21, "Quang nam", 10);
+
+        Stack<Employee> employees = new Stack<Employee>();
+        employees.push(employee);
+        employees.push(employee1);
+        employees.push(employee2);
+        employees.push(employee3);
+        employees.push(employee4);
+        employees.push(employee5);
+        employees.push(employee6);
+        employees.push(employee7);
+        employees.push(employee8);
+        employees.push(employee9);
+        return employees;
     }
 }
