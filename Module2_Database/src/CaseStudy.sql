@@ -11,7 +11,7 @@ create table KieuThue(
     Gia INT
 );
 create table DichVu(
-	IDDichVu INT auto_increment primary key,
+	IDDichVu INT auto_increment primary key, 
     TenDichVu varchar(45),
     DienTich INT,
     SoTang INT,
@@ -69,9 +69,9 @@ create table NhanVien(
     SDT varchar(45),
     Email varchar(45),
     DiaChi varchar(45),
-	constraint FK_IDViTri foreign key (IDViTri) references ViTri(IDViTri),
-    constraint FK_IDTrinhDo foreign key (IDTrinhDo) references TrinhDo(IDTrinhDo),
-    constraint FK_IDBoPhan foreign key (IDBoPhan) references BoPhan(IDBoPhan)
+	constraint FK_IDViTri foreign key (IDViTri) references ViTri(IDViTri) ,
+    constraint FK_IDTrinhDo foreign key (IDTrinhDo) references TrinhDo(IDTrinhDo) ,
+    constraint FK_IDBoPhan foreign key (IDBoPhan) references BoPhan(IDBoPhan) 
 );
 create table HopDong(
 	IDHopDong INT auto_increment primary key,
@@ -82,17 +82,17 @@ create table HopDong(
     NgayKetThuc date,
     TienDatCoc INT,
     TongTien INT,
-    constraint FK_IDNhanVien foreign key (IDNhanVien) references NhanVien(IDNhanVien),
-    constraint FK_IDKhachHang foreign key (IDKhachHang) references KhachHang(IDKhachHang),
-    constraint FK_IDDichVu foreign key (IDDichVu) references DichVu(IDDichVu)
+    constraint FK_IDNhanVien foreign key (IDNhanVien) references NhanVien(IDNhanVien)on delete cascade,
+    constraint FK_IDKhachHang foreign key (IDKhachHang) references KhachHang(IDKhachHang) on delete cascade,
+    constraint FK_IDDichVu foreign key (IDDichVu) references DichVu(IDDichVu) on delete cascade
 );
 create table HopDongChiTiet(
 	IDHopDongChiTiet INT auto_increment primary key,
     IDHopDong INT,
     IDDichVuDiKem INT,
     SoLuong INT,
-	constraint FK_IDHopDong foreign key (IDHopDong) references HopDong(IDHopDong),
-    constraint FK_IDDichVuDiKem foreign key (IDDichVuDiKem) references DichVuDiKem(IDDichVuDiKem)
+	constraint FK_IDHopDong foreign key (IDHopDong) references HopDong(IDHopDong) on delete cascade,
+    constraint FK_IDDichVuDiKem foreign key (IDDichVuDiKem) references DichVuDiKem(IDDichVuDiKem) on delete cascade
 );
 insert into TrinhDo(TrinhDo) values ('Dai Hoc'),
 ('Cao Dang'),
@@ -110,8 +110,8 @@ insert into nhanvien(HoTen,IDTrinhDo,IDBoPhan,NgaySinh,SoCMTND,Luong,SDT,Email,D
 ('Kong Thanh',1,3,'1993-3-6','456321799','13 trieu','0909999999','kongthanh@gmail.com','Ho Chi Minh'),
 ('Nguyen Trung Nam',3,3,'1995-4-10','156321799','14 trieu','0123456789','nguyentrungnam@gmail.com','Ho Chi Minh');
 insert into loaikhach(TenLoaiKhach) values('Diamond'),
-('Bronze');
-insert into khachhang( IDLoaiKhach,HoTen,NgaySinh,SoCMTND,SDT,email,DiaChi) value
+('Platinium');
+insert into khachhang( IDLoaiKhach,HoTen,NgaySinh,SoCMTND,SDT,email,DiaChi) value 
 (2,'Nguyen thi','2008-7-04','6541234894','025659874','nguyenthi@gmail.com','Vinh'),
 (2,'Tran Tam','1995-4-10','2222456897','0905654789','trantam@gmail.com','Vinh'),
 (2,'Le Phuoc','1995-8-11','1113336666','0257994135','lephuoc@gmail.com','Hue'),
@@ -124,7 +124,7 @@ insert into DichVu(TenDichVu,DienTich,SoNguoiToiDa,ChiPhiThue,IDLoaiDichVu) valu
 insert into DichVuDiKem(TenDichVuDiKem,Gia,DonVi,TrangThaiKhaDung) value('massage',100000,5,'ok'),
 ('karaoke',200000,1,'full');
 insert into HopDong(IDNhanVien,IDKhachHang,IDDichVu,NgayLamHopDong,NgayKetThuc,TienDatCoc,TongTien) value
-(3,3,1,'2013-09-11','2020-10-20',500000,1000000),
+(3,1,1,'2019-09-11','2020-10-20',500000,11000000),
 (3,3,1,'2013-09-11','2020-10-20',500000,1000000),
 (3,3,1,'2013-09-11','2020-10-20',500000,1000000),
 (2,5,2,'2019-09-11','2021-10-20',500000,1000000),
@@ -133,22 +133,26 @@ insert into HopDong(IDNhanVien,IDKhachHang,IDDichVu,NgayLamHopDong,NgayKetThuc,T
 (2,2,1,'2016-12-12','2018-05-24',400000,3000000),
 (7,3,2,'2012-12-12','2019-06-24',400000,5000000),
 (5,4,2,'2019-12-12','2019-05-24',400000,3000000),
-(6,5,1,'2012-12-12','2019-06-24',400000,5000000);
+(6,5,1,'2012-12-12','2019-06-24',400000,50000000);
 insert into HopDongChiTiet(IDHopDong,IDDichVuDiKem,SoLuong) value(1,1,2);
 insert into HopDongChiTiet(IDHopDong,IDDichVuDiKem,SoLuong) value(1,1,4);
 insert into HopDongChiTiet(IDHopDong,IDDichVuDiKem,SoLuong) value(1,1,4);
 insert into HopDongChiTiet(IDHopDong,IDDichVuDiKem,SoLuong) value(3,1,2);
-insert into HopDongChiTiet(IDHopDong,IDDichVuDiKem,SoLuong) value(2,2,1);
-insert into HopDongChiTiet(IDHopDong,IDDichVuDiKem,SoLuong) value(5,2,3);
-insert into HopDongChiTiet(IDHopDong,IDDichVuDiKem,SoLuong) value(7,2,4);
+insert into HopDongChiTiet(IDHopDong,IDDichVuDiKem,SoLuong) value(2,1,1);
+insert into HopDongChiTiet(IDHopDong,IDDichVuDiKem,SoLuong) value(5,1,3);
+insert into HopDongChiTiet(IDHopDong,IDDichVuDiKem,SoLuong) value(7,1,4);
+insert into HopDongChiTiet(IDHopDong,IDDichVuDiKem,SoLuong) value(7,1,4);
+insert into HopDongChiTiet(IDHopDong,IDDichVuDiKem,SoLuong) value(7,1,4);
+insert into HopDongChiTiet(IDHopDong,IDDichVuDiKem,SoLuong) value(7,1,4);
+insert into HopDongChiTiet(IDHopDong,IDDichVuDiKem,SoLuong) value(7,1,4);
 select IDNhanVien,HoTen from nhanvien where (HoTen like 'H%' or HoTen like'T%'or HoTen like 'K%') and length(HoTen)<=15;
 select * from khachhang where year(NgaySinh)<=2001 and DiaChi='Da Nang' or DiaChi='Quang Tri';
 /**
-4.	Đếm xem tương ứng với mỗi khách hàng đã từng đặt phòng bao nhiêu lần. Kết quả hiển thị được sắp
-xếp tăng dần theo số lần đặt phòng của khách hàng. Chỉ đếm những khách hàng nào có Tên loại khách hàng
+4.	Đếm xem tương ứng với mỗi khách hàng đã từng đặt phòng bao nhiêu lần. Kết quả hiển thị được sắp 
+xếp tăng dần theo số lần đặt phòng của khách hàng. Chỉ đếm những khách hàng nào có Tên loại khách hàng 
 là “Diamond”.
 **/
-select khachhang.IDLoaiKhach,count(hopdong.IDHopDong)as 'so lan dat',khachhang.HoTen,loaikhach.tenloaikhach
+select khachhang.IDLoaiKhach,count(hopdong.IDHopDong)as 'so lan dat',khachhang.HoTen,loaikhach.tenloaikhach 
 from khachhang
 join hopdong on khachhang.IDKhachHang=hopdong.IDKhachHang
 join loaikhach on khachhang.IDLoaiKhach=loaikhach.IDLoaiKhach
@@ -157,12 +161,12 @@ group by khachhang.IDKhachHang
 order by count(hopdong.IDHopDong) asc ;
 /**
 5.	Hiển thị IDKhachHang, HoTen, TenLoaiKhach, IDHopDong, TenDichVu, NgayLamHopDong, NgayKetThuc,
-TongTien (Với TongTien được tính theo công thức như sau: ChiPhiThue + SoLuong*Gia, với SoLuong và
+TongTien (Với TongTien được tính theo công thức như sau: ChiPhiThue + SoLuong*Gia, với SoLuong và 
 Giá là từ bảng DichVuDiKem) cho tất cả các Khách hàng đã từng đặt phỏng.
 (Những Khách hàng nào chưa từng đặt phòng cũng phải hiển thị ra).
 **/
 select khachhang.IDKhachHang,KhachHang.HoTen,loaikhach.TenLoaiKhach,hopdong.NgayLamHopDong,
-hopdong.NgayKetThuc,sum(ChiPhiThue+(SoLuong*Gia))as'Tong Tien' from khachhang
+hopdong.NgayKetThuc,sum(ChiPhiThue+(SoLuong*Gia))as'Tong Tien' from khachhang 
 join loaikhach on khachhang.IDLoaiKhach=loaikhach.IDLoaiKhach
 left join hopdong on khachhang.IDKhachHang=hopdong.IDKhachHang
 left join dichvu on hopdong.IDDichVU=dichvu.IDDichVu
@@ -171,23 +175,23 @@ left join dichvudikem on hopdongchitiet.IDDichVuDiKem=dichvudikem.IDDichVuDiKem
 group by khachhang.IDKhachHang
 order by khachhang.IDKhachHang;
 /**
-6.	Hiển thị IDDichVu, TenDichVu, DienTich, ChiPhiThue, TenLoaiDichVu của tất cả các loại Dịch vụ
+6.	Hiển thị IDDichVu, TenDichVu, DienTich, ChiPhiThue, TenLoaiDichVu của tất cả các loại Dịch vụ 
 chưa từng được Khách hàng thực hiện đặt từ quý 1 của năm 2019 (Quý 1 là tháng 1, 2, 3).
 **/
 select dichvu.IDDichVu,dichvu.TenDichVu,dichvu.DienTich,dichvu.ChiPhiThue,loaidichvu.TenLoaiDichVu
-from dichvu
+from dichvu 
 join loaidichvu on dichvu.idLoaiDichVu=loaidichvu.idLoaiDichVu
-where not exists(select hopdong.NgayLamHopDong from hopdong where(hopdong.NgayLamHopDong between
+where not exists(select hopdong.NgayLamHopDong from hopdong where(hopdong.NgayLamHopDong between 
 '2019-01-01' and '2019-03-29') and dichvu.IDDichVu=hopdong.IDDichVu);
 /**
-7.	Hiển thị thông tin IDDichVu, TenDichVu, DienTich, SoNguoiToiDa, ChiPhiThue, TenLoaiDichVu của
-tất cả các loại dịch vụ đã từng được Khách hàng đặt phòng trong năm 2018 nhưng chưa từng được Khách
+7.	Hiển thị thông tin IDDichVu, TenDichVu, DienTich, SoNguoiToiDa, ChiPhiThue, TenLoaiDichVu của 
+tất cả các loại dịch vụ đã từng được Khách hàng đặt phòng trong năm 2018 nhưng chưa từng được Khách 
 hàng đặt phòng  trong năm 2019.
 **/
 select dichvu.IDDichVu,dichvu.TenDichVu,dichvu.DienTich,dichvu.SoNguoiToiDa,dichvu.ChiPhiThue,
 loaidichvu.TenLoaiDichVu from dichvu
-join loaidichvu
-on dichvu.IDLoaiDichVu=loaidichvu.IDLoaiDichVu
+join loaidichvu 
+on dichvu.IDLoaiDichVu=loaidichvu.IDLoaiDichVu 
 where exists(select hopdong.NgayLamHopDong from hopdong where(hopdong.NgayLamHopDong between'2018-01-01' and '2019-01-01')
 and dichvu.IDDichVu=hopdong.IDDichVu)
 and not exists(select hopdong.NgayLamHopDong from hopdong where(hopdong.NgayLamHopDong between '2019-01-01' and now())
@@ -197,7 +201,7 @@ and dichvu.IDDichVu=hopdong.IDDichVu);
 Học viên sử dụng theo 3 cách khác nhau để thực hiện yêu cầu trên
 **/
 select distinct khachhang.HoTen from khachhang;
-select khachhang.HoTen from khachhang
+select khachhang.HoTen from khachhang 
 group by khachhang.HoTen;
 select khachhang.HoTen from khachhang
 union
@@ -227,22 +231,22 @@ where year(hopdong.NgayLamHopDong) = '2019' or year(hopdong.NgayLamHopDong) is n
 group by meses.month
 order by meses.month;
 /**
-10.	Hiển thị thông tin tương ứng với từng Hợp đồng thì đã sử dụng bao nhiêu Dịch vụ đi kèm.
-Kết quả hiển thị bao gồm IDHopDong, NgayLamHopDong, NgayKetthuc, TienDatCoc, SoLuongDichVuDiKem
+10.	Hiển thị thông tin tương ứng với từng Hợp đồng thì đã sử dụng bao nhiêu Dịch vụ đi kèm. 
+Kết quả hiển thị bao gồm IDHopDong, NgayLamHopDong, NgayKetthuc, TienDatCoc, SoLuongDichVuDiKem 
 (được tính dựa trên việc count các IDHopDongChiTiet).
 **/
 select hopdong.IDHopDong,hopdong.NgayLamHopDong,hopdong.NgayKetThuc,hopdong.TienDatCoc,sum(HopDongChiTiet.SoLuong)as'SoLuongDichVuDiKem '
-from hopdong
+from hopdong 
 left join hopdongchitiet
 on hopdong.IDHopDong=hopdongchitiet.IDHopDong
 left join dichvudikem
 on hopdongchitiet.IDDichVuDiKem=dichvudikem.IDDichVuDiKem
 group by hopdong.IDhopdong;
 /**
-11.	Hiển thị thông tin các Dịch vụ đi kèm đã được sử dụng bởi những Khách hàng có TenLoaiKhachHang là “Diamond” và
+11.	Hiển thị thông tin các Dịch vụ đi kèm đã được sử dụng bởi những Khách hàng có TenLoaiKhachHang là “Diamond” và 
 có địa chỉ là “Vinh” hoặc “Quảng Ngãi”.
 **/
-select dichvudikem.IDDichVuDiKem,dichvudikem.Gia from dichvudikem
+select dichvudikem.IDDichVuDiKem,dichvudikem.Gia from dichvudikem 
 join hopdongchitiet
 on dichvudikem.IDDichVuDiKem=hopdongchitiet.IDDichVuDiKem
 join hopdong
@@ -251,8 +255,8 @@ join khachhang
 on hopdong.IDKhachHang=khachhang.IDKhachHang
 where khachhang.IDLoaiKhach=1 and (khachhang.DiaChi='Vinh' or khachhang.DiaChi='Quang Ngai');
 /**
-12.	Hiển thị thông tin IDHopDong, TenNhanVien, TenKhachHang, SoDienThoaiKhachHang, TenDichVu, SoLuongDichVuDikem
-(được tính dựa trên tổng Hợp đồng chi tiết), TienDatCoc của tất cả các dịch vụ đã từng được khách hàng đặt vào 3 tháng cuối
+12.	Hiển thị thông tin IDHopDong, TenNhanVien, TenKhachHang, SoDienThoaiKhachHang, TenDichVu, SoLuongDichVuDikem 
+(được tính dựa trên tổng Hợp đồng chi tiết), TienDatCoc của tất cả các dịch vụ đã từng được khách hàng đặt vào 3 tháng cuối 
 năm 2019 nhưng chưa từng được khách hàng đặt vào 6 tháng đầu năm 2019.
 **/
 select hopdong.IDHopDong,nhanvien.HoTen as'ho ten nhan vien',khachhang.HoTen as'ho ten khach hang',khachhang.SDT,dichvu.TenDichVu,
@@ -290,7 +294,7 @@ group by dichvudikem.IDDichVuDiKem;
 14.	Hiển thị thông tin tất cả các Dịch vụ đi kèm chỉ mới được sử dụng một lần duy nhất.
 Thông tin hiển thị bao gồm IDHopDong, TenLoaiDichVu, TenDichVuDiKem, SoLanSuDung.
 **/
-select hopdong.IDHopDong,loaidichvu.TenLoaiDichVu,dichvudikem.TenDichVuDiKem,count( hopdongchitiet.IDDichVuDiKem) as solansudung from dichvudikem
+select hopdong.IDHopDong,loaidichvu.TenLoaiDichVu,dichvudikem.TenDichVuDiKem,count( hopdongchitiet.IDDichVuDiKem) as solansudung from dichvudikem 
 join hopdongchitiet on dichvudikem.IDDichVuDiKem=hopdongchitiet.IDDichVuDiKem
 join hopdong on hopdong.IDHopDong=hopdongchitiet.IDHopDong
 join dichvu on dichvu.IDDichVu=hopdong.IDDichVu
@@ -298,7 +302,7 @@ join loaidichvu on dichvu.IDLoaiDichVu=loaidichvu.IDLoaiDichVu
 group by hopdongchitiet.IDDichVuDiKem
 having count(hopdongchitiet.IDDichVuDiKem)=1;
 /**
-15.	Hiển thi thông tin của tất cả nhân viên bao gồm IDNhanVien, HoTen, TrinhDo, TenBoPhan, SoDienThoai,
+15.	Hiển thi thông tin của tất cả nhân viên bao gồm IDNhanVien, HoTen, TrinhDo, TenBoPhan, SoDienThoai, 
 DiaChi mới chỉ lập được tối đa 3 hợp đồng từ năm 2018 đến 2019.
 **/
 select nhanvien.IDNhanVien,nhanvien.HoTen,trinhdo.TrinhDo,bophan.TenBoPhan,nhanvien.SDT,nhanvien.DiaChi from nhanvien
@@ -311,14 +315,39 @@ order by IDNhanVien;
 /**
 16.	Xóa những Nhân viên chưa từng lập được hợp đồng nào từ năm 2017 đến năm 2019.
 **/
-select nhanvien.IDNhanVien,nhanvien.HoTen,trinhdo.TrinhDo,bophan.TenBoPhan,nhanvien.SDT,nhanvien.DiaChi from nhanvien
-left join trinhdo on nhanvien.IDTrinhDo=trinhdo.IDTrinhDo
-left join bophan on bophan.IDBoPhan=nhanvien.IDBoPhan
-left join hopdong on nhanvien.IDNhanVien=hopdong.IDNhanVien
-group by nhanvien.IDNhanVien
-having count(hopdong.IDHopDong)=0
-order by IDNhanVien;
-
+SET SQL_SAFE_UPDATES = 0;
+delete nhanvien
+from nhanvien
+inner join hopdong on hopdong.IDnhanvien = nhanvien.IDnhanvien
+ where year(ngaylamhopdong) not between '2017' and '2019';
+SET SQL_SAFE_UPDATES = 1;
+/**
+17.	Cập nhật thông tin những khách hàng có TenLoaiKhachHang từ  Platinium lên Diamond,
+chỉ cập nhật những khách hàng đã từng đặt phòng với tổng Tiền thanh toán trong năm 2019 là lớn hơn 10.000.000 VNĐ.
+**/
+update khachhang,(select hopdong.IDKhachHang as id,sum(hopdong.TongTien) as tong_tien from hopdong
+where year(hopdong.NgayLamHopDong)=2019
+group by hopdong.IDKhachHang
+having tong_tien>10000000)as temp set khachhang.IDLoaiKhach=(select loaikhach.IDLoaiKhach from loaikhach
+where loaikhach.TenLoaiKhach="Diamond")
+where khachhang.IDLoaiKhach=(select loaikhach.IDLoaiKhach from loaikhach where loaikhach.TenLoaiKhach="Platium")
+and temp.id=khachhang.IDKhachHang; 
+/**
+18.	Xóa những khách hàng có hợp đồng trước năm 2016 (chú ý ràngbuộc giữa các bảng).
+**/
+delete khachhang,hopdong,hopdongchitiet from khachhang 
+join hopdong on khachhang.IDKhachHang=hopdong.IDKhachHang
+join hopdongchitiet on hopdong.IDHopDong=hopdongchitiet.IDHopDong
+where not exists(select hopdong.IDHopDong where year(hopdong.NgayLamHopDong)>"2016" and khachhang.IDKhachHang=hopdong.IDKhachHang);
+/**
+19.	Cập nhật giá cho các Dịch vụ đi kèm được sử dụng trên 10 lần trong năm 2019 lên gấp đôi.
+**/
+update dichvudikem join (select dichvudikem.TenDichVuDiKem as ten_dich_vu_di_kem from hopdongchitiet join dichvudikem
+on dichvudikem.IDDichVuDikem=hopdongchitiet.IDDichVuDiKem
+group by dichvudikem.IDDichVuDiKem
+having count(hopdongchitiet.IDDichVuDikem)>3) as temp set dichvudikem.Gia=dichvudikem.Gia*2
+where dichvudikem.TenDichVuDiKem=temp.ten_dich_vu_di_kem;
+ 
 
 
 
