@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<h3>Demo JPA</h3>
+<p>
+    <a th:href="@{/listallemployee}">
+        list all employee creation
+    </a>
+</p>
+<p>
+    <a th:href="@{listallemployee/Nam}">
+        list all employee name is Nam creation
+    </a>
+</p>
+<p>
+    <a th:href="@{listallemployee/annotation}">
+        list all employee annotation
+    </a>
+</p>
+<p>
+    <a th:href="@{listallemployee/annotation/Nam/24}">
+        list all employee annotation have nam is Nam and age is 24
+    </a>
+</p>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="detail">
+    <h2>Information Customer</h2>
+    <p>
+        <a th:href="@{/}">
+            Back to customer list
+        </a>
+    </p>
+    <div>
+        <label>ID:</label>
+        <label th:text="${customer.getId()}"></label>
+    </div>
+    <div>
+        <label>Age:</label>
+        <label th:text="${customer.getAge()}"></label>
+    </div>
+    <div >
+        <label>Name:</label>
+        <label th:text="${customer.getName()}"></label>
+    </div>
+    <div>
+        <label>Email:</label>
+        <label th:text="${customer.getEmail()}"></label>
+    </div>
+</div>
+</body>
+</html>

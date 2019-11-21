@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class CalculatorController {
     @GetMapping("/calculatorForm")
-    public String index(Model model) {
-//        model.addAttribute("operator", "o");
-//        model.addAttribute("view", "views/calculatorForm");
+    public String index() {
         return "calculatorForm";
     }
 
@@ -50,7 +48,6 @@ public class CalculatorController {
         model.addAttribute("operator", operator);
         model.addAttribute("rightOperand", rightNumber);
         model.addAttribute("result", result);
-//        model.addAttribute("view", "views/calculatorForm");
-        return "base-layout";
+        return "calculatorForm";
     }
 }

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<h3>Employee</h3>
+<table>
+    <thead>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Email</th>
+    <th>Id department</th>
+    </thead>
+    <th:block th:if="${employee != null}">
+        <td th:text="${employee.getId()}"></td>
+        <td th:text="${employee.getName()}"></td>
+        <td th:text="${employee.getAge()}"></td>
+        <td th:text="${employee.getEmail()}"></td>
+        <td th:text="${employee.getDepartment_id()}"></td>
+    </th:block>
+    <th:block th:unless="${employee != null}">
+        No, thanks
+    </th:block>
+</table>
+</body>
+</html>

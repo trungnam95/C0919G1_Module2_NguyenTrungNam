@@ -23,6 +23,7 @@
                 </select>
     <input type="text" name="rightOperand">
     <input type="submit" value="result">
+    <h3>${result}</h3>
 </form>
 </body>
 </html>

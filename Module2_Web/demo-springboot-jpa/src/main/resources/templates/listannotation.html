@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<h3>Employee</h3>
+<table>
+    <thead>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Email</th>
+    <th>Id department</th>
+
+    </thead>
+    <tr th:each="item : ${employee}">
+        <td th:text="${item.getId()}"></td>
+        <td th:text="${item.getName()}"></td>
+        <td th:text="${item.getAge()}"></td>
+        <td th:text="${item.getEmail()}"></td>
+        <td th:text="${item.getDepartment_id()}"></td>
+    </tr>
+</table>
+</body>
+</html>
