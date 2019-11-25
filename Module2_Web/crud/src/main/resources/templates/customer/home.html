@@ -10,18 +10,27 @@
 </head>
 <body>
 <div class="container">
-    <h2 style="color: darkorange">List Customer</h2>
+    <h2 style="color: darkorange">
+        <a th:href="@{/}">
+        List Customer
+        </a>
+    </h2>
     <p>
         <a th:href="@{/create}">
             Create Customer
         </a>
     </p>
+    <form action="/" method="get">
+        Search by name:
+        <input name="name" type="text"/>
+        <input type="submit" value="Search"/>
+    </form><br/>
     <div >
         <div th:if="${success}">
             <span style="color: red" th:text="${success}"></span>
         </div>
     </div>
-    <table class="table table-warning">
+    <table class="table table-danger">
         <thead>
         <tr>
             <th>ID</th>
@@ -43,6 +52,12 @@
         </tr>
         </tbody>
     </table>
+    <div>
+        <a th:href="@{'/'(page=${customers.number - 1})}" th:if="${customers.hasPrevious()}">Previous</a>
+        <span th:text="${customers.number + 1}"></span>/<span th:text="${customers.totalPages}"></span>
+        <a th:href="@{'/'(page=${customers.getNumber() + 1})}" th:if="${customers.hasNext()}">Next</a>
+    </div>
+
 </div>
 </body>
 </html>
