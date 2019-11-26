@@ -4,6 +4,8 @@ import net.bytebuddy.dynamic.loading.InjectionClassLoader;
 import org.springframework.scheduling.support.SimpleTriggerContext;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "customers")
@@ -12,7 +14,11 @@ public class Customer {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id_customer;
+    @NotEmpty
+    @Size(min = 5,max = 45)
     private String firstname;
+    @NotEmpty
+    @Size(min = 5,max = 45)
     private String lastname;
 
     @ManyToOne
@@ -25,7 +31,6 @@ public class Customer {
         this.firstname = firstname;
         this.lastname = lastname;
     }
-
 
     public Long getId_customer() {
         return id_customer;

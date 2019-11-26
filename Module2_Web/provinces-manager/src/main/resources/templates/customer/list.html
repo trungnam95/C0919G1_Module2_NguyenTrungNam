@@ -1,39 +1,51 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-<a href="/create-customer">Create new customer</a>
-<h1>Customers</h1>
-<form >
-    Search by first name:
-    <input name="s" type="text"/>
-    <input type="submit" value="Search"/>
-</form><br/>
-<table border="1">
-    <tr>
-        <th>First name</th>
-        <th>Last name</th>
-        <th>Province</th>
-        <th>Edit</th>
-        <th>Delete</th>
-    </tr>
-    <th:block th:each="customer : ${customers}">
+<div class="container">
+    <a href="/create-customer">Create new customer</a>
+    <h1><a th:href="@{/customers}">Customers</a></h1>
+    <form >
+        Search by first name:
+        <input name="s" type="text"/>
+        <input type="submit" value="Search"/>
+    </form><br/>
+    <table class="table table-striped">
+        <thead>
         <tr>
-            <td th:text="${customer.firstname}"></td>
-            <td th:text="${customer.lastname}"></td>
-            <td th:text="${customer.province.name}"></td>
-            <td><a th:href="@{/edit-customer/__${customer.getId_customer()}__ }">Edit</a></td>
-            <td><a th:href="@{/delete-customer/__${customer.getId_customer()}__ }">Delete</a></td>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Province</th>
+            <th>Edit</th>
+            <th>Delete</th>
         </tr>
-    </th:block>
-</table>
-<div>
-    <a th:href="@{'/customers'(page=${customers.number - 1})}" th:if="${customers.hasPrevious()}">Previous</a>
-    <span th:text="${customers.number + 1}"></span>/<span th:text="${customers.totalPages}"></span>
-    <a th:href="@{'/customers'(page=${customers.number + 1})}" th:if="${customers.hasNext()}">Next</a>
+        </thead>
+        <tbody>
+        <th:block th:each="customer : ${customers}">
+            <tr>
+                <td th:text="${customer.firstname}"></td>
+                <td th:text="${customer.lastname}"></td>
+                <td th:text="${customer.province.name}"></td>
+                <td><a th:href="@{/edit-customer/__${customer.getId_customer()}__ }">Edit</a></td>
+                <td><a th:href="@{/delete-customer/__${customer.getId_customer()}__ }">Delete</a></td>
+            </tr>
+        </th:block>
+        </tbody>
+    </table>
+    <div>
+        <a th:href="@{'/customers'(page=${customers.number - 1},s=${search})}" th:if="${customers.hasPrevious()}">Previous</a>
+        <span th:text="${customers.number + 1}"></span>/<span th:text="${customers.totalPages}"></span>
+        <a th:href="@{'/customers'(page=${customers.number + 1},s=${search})}" th:if="${customers.hasNext()}">Next</a>
+    </div>
 </div>
+
 </body>
 </html>

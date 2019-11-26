@@ -7,7 +7,10 @@ import com.codegym.provinces.service.ProvinceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -22,37 +25,44 @@ public class CustomerController {
     private ProvinceService provinceService;
 
     @ModelAttribute("provinces")
-    public Iterable<Province> provinces(){
+    public Iterable<Province> provinces() {
         return provinceService.findAll();
     }
+
     @GetMapping("/")
-    public ModelAndView home(){
-        ModelAndView modelAndView=new ModelAndView("home");
+    public ModelAndView home() {
+        ModelAndView modelAndView = new ModelAndView("home");
         return modelAndView;
     }
 
     @GetMapping("/customers")
-    public ModelAndView listCustomers(@RequestParam("s") Optional<String> s, Pageable pageable){
+    public ModelAndView listCustomers(@RequestParam(value = "s", required = false) String s, @PageableDefault(size = 4) Pageable pageable) {
         Page<Customer> customers;
-        if(s.isPresent()){
-            customers = customerService.findAllByFirstNameContaining(s.get(), pageable);
+        ModelAndView modelAndView = new ModelAndView("customer/list");
+        if (s != null) {
+            customers = customerService.findAllByFirstNameContaining(s, pageable);
+            modelAndView.addObject("search", s);
         } else {
             customers = customerService.findAll(pageable);
         }
-        ModelAndView modelAndView = new ModelAndView("customer/list");
+
         modelAndView.addObject("customers", customers);
         return modelAndView;
     }
 
     @GetMapping("/create-customer")
-    public ModelAndView showCreateForm(){
+    public ModelAndView showCreateForm() {
         ModelAndView modelAndView = new ModelAndView("customer/create");
         modelAndView.addObject("customer", new Customer());
         return modelAndView;
     }
 
     @PostMapping("/create-customer")
-    public ModelAndView saveCustomer(@ModelAttribute("customer") Customer customer){
+    public ModelAndView saveCustomer(@Validated @ModelAttribute("customer") Customer customer, BindingResult bindingResult) {
+        if (bindingResult.hasFieldErrors()) {
+            ModelAndView modelAndView = new ModelAndView("customer/create");
+            return modelAndView;
+        }
         customerService.save(customer);
         ModelAndView modelAndView = new ModelAndView("customer/create");
         modelAndView.addObject("customer", new Customer());
@@ -61,21 +71,21 @@ public class CustomerController {
     }
 
     @GetMapping("/edit-customer/{id}")
-    public ModelAndView showEditForm(@PathVariable Long id){
+    public ModelAndView showEditForm(@PathVariable Long id) {
         Customer customer = customerService.findById(id);
-        if(customer != null) {
+        if (customer != null) {
             ModelAndView modelAndView = new ModelAndView("customer/edit");
             modelAndView.addObject("customer", customer);
             return modelAndView;
 
-        }else {
+        } else {
             ModelAndView modelAndView = new ModelAndView("/error404");
             return modelAndView;
         }
     }
 
     @PostMapping("/edit-customer")
-    public ModelAndView updateCustomer(@ModelAttribute("customer") Customer customer){
+    public ModelAndView updateCustomer(@ModelAttribute("customer") Customer customer) {
         customerService.save(customer);
         ModelAndView modelAndView = new ModelAndView("customer/edit");
         modelAndView.addObject("customer", customer);
@@ -84,21 +94,21 @@ public class CustomerController {
     }
 
     @GetMapping("/delete-customer/{id}")
-    public ModelAndView showDeleteForm(@PathVariable Long id){
+    public ModelAndView showDeleteForm(@PathVariable Long id) {
         Customer customer = customerService.findById(id);
-        if(customer != null) {
+        if (customer != null) {
             ModelAndView modelAndView = new ModelAndView("customer/delete");
             modelAndView.addObject("customer", customer);
             return modelAndView;
 
-        }else {
+        } else {
             ModelAndView modelAndView = new ModelAndView("/error404");
             return modelAndView;
         }
     }
 
     @PostMapping("/delete-customer")
-    public String deleteCustomer(@ModelAttribute("customer") Customer customer){
+    public String deleteCustomer(@ModelAttribute("customer") Customer customer) {
         customerService.remove(customer.getId_customer());
         return "redirect:customers";
     }
