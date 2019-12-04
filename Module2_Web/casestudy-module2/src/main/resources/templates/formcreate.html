@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1>Create Service</h1>
+    <p>
+        <a th:href="@{/}">home</a>
+    </p>
+    <th:block th:if="${message}">
+        <p th:text="${message}"></p>
+    </th:block>
+    <form th:action="@{/createservice}" th:object="${dichvu}" method="post">
+        <table>
+            <tr>
+                <td>Ten dichvu:</td>
+                <td><input type="text" th:field="*{tenDichVu}"/></td>
+<!--                <td th:if="${#fields.hasErrors('tenDichVu')}" th:errors="*{tenDichVu}">Error</td>-->
+            </tr>
+            <tr>
+                <td>Dien tich:</td>
+                <td><input type="text" th:field="*{dienTich}"/></td>
+<!--                <td th:if="${#fields.hasErrors('dienTich')}" th:errors="*{dienTich}">Error</td>-->
+            </tr>
+            <tr>
+                <td>So tang:</td>
+                <td><input type="text" th:field="*{soTang}"/></td>
+<!--                <td th:if="${#fields.hasErrors('dienTich')}" th:errors="*{dienTich}">Error</td>-->
+            </tr>
+            <tr>
+                <td>So nguoi toi da:</td>
+                <td><input type="text" th:field="*{soNguoiToiDa}"/></td>
+                <!--                <td th:if="${#fields.hasErrors('dienTich')}" th:errors="*{dienTich}">Error</td>-->
+            </tr>
+            <tr>
+                <td>Chi phi thue:</td>
+                <td><input type="text" th:field="*{chiPhiThue}"/></td>
+                <!--                <td th:if="${#fields.hasErrors('dienTich')}" th:errors="*{dienTich}">Error</td>-->
+            </tr>
+            <tr>
+                <td>trang thai:</td>
+                <td><input type="text" th:field="*{trangThai}"/></td>
+                <!--                <td th:if="${#fields.hasErrors('dienTich')}" th:errors="*{dienTich}">Error</td>-->
+            </tr>
+            <tr>
+                <td>Loai dich vu:</td>
+                <td>
+                    <select th:field="*{loaiDichVu}">
+                        <option th:each="p : ${loaidichvu}" th:value="${p.getIdLoaiDichVu()}"
+                                th:text="${p.getTenLoaiDichVu()}"></option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Create service"></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a th:href="@{/product}">Back to list</a>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Action</th>
+        <th>Action</th>
+        <th>Amount</th>
+        <th>Total</th>
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:each="pro: ${list.values()}">
+        <tr>
+            <td th:text="${pro.product.id_product}"></td>
+            <td th:text="${pro.product.nameProduct}"></td>
+            <td th:text="${pro.product.price_product}"></td>
+            <td><a th:href="@{/productlist/delete/{id}(id=${pro.product.id_product})}">delete</a></td>
+<!--            <td><a th:href="@{/productlist/delete}">delete all</a></td>-->
+            <td th:text="${pro.quantity}"></td>
+            <td th:text="${pro.total}"></td>
+    </th:block>
+    </tbody>
+</table>
+<!--<form action="/productlist/delete" method="post">-->
+<!--    <input type="submit" value="delete all">-->
+<!--</form>-->
+<form action="/product/totalpay" method="post">
+    <input type="submit" value="checkout">
+    <p>result</p>
+    <p th:text="${total}"></p>
+</form>
+</body>
+</html>

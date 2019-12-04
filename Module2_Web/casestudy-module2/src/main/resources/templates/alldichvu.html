@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/displaydichvu" method="get">
+    Search by cost between
+    <input name="chiphithuebatdau" placeholder="0"  type="number"/>
+    <input name="chiphithueketthuc" placeholder="0" type="number"/>
+    <input type="submit" value="Search"/>
+</form>
+<table>
+    <tr>
+        <th>IDDichVu</th>
+        <th>TenDichVu</th>
+        <th>Dientich</th>
+        <th>SoTang</th>
+        <th>Songuoitoida</th>
+        <th>ChiPhiThue</th>
+        <th>Trangthai</th>
+    </tr>
+    <th:block th:each="dichvu : ${listalldichvu}">
+        <tr>
+            <td th:text="${dichvu.getIdDichVu()}"></td>
+            <td th:text="${dichvu.getTenDichVu()}"></td>
+            <td th:text="${dichvu.getDienTich()}"></td>
+            <td th:text="${dichvu.getSoTang()}"></td>
+            <td th:text="${dichvu.getSoNguoiToiDa()}"></td>
+            <td th:text="${dichvu.getChiPhiThue()}"></td>
+            <td th:text="${dichvu.getTrangThai()}"></td>
+        </tr>
+    </th:block>
+</table>
+</body>
+</html>

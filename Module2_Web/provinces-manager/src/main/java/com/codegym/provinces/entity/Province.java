@@ -13,7 +13,7 @@ public class Province {
 
     private String name;
 
-    @OneToMany(mappedBy = "province")
+    @OneToMany(targetEntity = Customer.class)
     private List<Customer> customers;
 
     public Province() {
