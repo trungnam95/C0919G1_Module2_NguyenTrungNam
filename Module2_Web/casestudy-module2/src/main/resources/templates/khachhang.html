@@ -23,32 +23,36 @@
             <tr>
                 <td>Ten Khach hang:</td>
                 <td><input type="text" th:field="*{hoTen}"/></td>
-                <!--                <td th:if="${#fields.hasErrors('tenDichVu')}" th:errors="*{tenDichVu}">Error</td>-->
+                                <td th:if="${#fields.hasErrors('hoTen')}" th:errors="*{hoTen}">Error</td>
+                <!--                <td><select th:field="*{hoTen}">-->
+                <!--                    <option value="Nam">Nam</option>-->
+                <!--                    <option value="Nu">Nu</option>-->
+                <!--                </select></td>-->
             </tr>
             <tr>
                 <td>Ngay Sinh</td>
                 <td><input type="date" th:field="*{ngaySinh}"/></td>
-                <!--                <td th:if="${#fields.hasErrors('dienTich')}" th:errors="*{dienTich}">Error</td>-->
+                                <td th:if="${#fields.hasErrors('ngaySinh')}" th:errors="*{ngaySinh}">Error</td>
             </tr>
             <tr>
                 <td>So ID:</td>
                 <td><input type="text" th:field="*{idCard}"/></td>
-                <!--                <td th:if="${#fields.hasErrors('dienTich')}" th:errors="*{dienTich}">Error</td>-->
+                                <td th:if="${#fields.hasErrors('idCard')}" th:errors="*{idCard}">Error</td>
             </tr>
             <tr>
                 <td>so dien thoai</td>
                 <td><input type="text" th:field="*{sDT}"/></td>
-                <!--                <td th:if="${#fields.hasErrors('dienTich')}" th:errors="*{dienTich}">Error</td>-->
+                                <td th:if="${#fields.hasErrors('sDT')}" th:errors="*{sDT}">Error</td>
             </tr>
             <tr>
                 <td>email</td>
                 <td><input type="text" th:field="*{email}"/></td>
-                <!--                <td th:if="${#fields.hasErrors('dienTich')}" th:errors="*{dienTich}">Error</td>-->
+                                <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error</td>
             </tr>
             <tr>
                 <td>dia chi</td>
                 <td><input type="text" th:field="*{diaChi}"/></td>
-                <!--                <td th:if="${#fields.hasErrors('dienTich')}" th:errors="*{dienTich}">Error</td>-->
+                                <td th:if="${#fields.hasErrors('diaChi')}" th:errors="*{diaChi}">Error</td>
             </tr>
 <!--            <tr>-->
 <!--                <td>Loai dich vu:</td>-->

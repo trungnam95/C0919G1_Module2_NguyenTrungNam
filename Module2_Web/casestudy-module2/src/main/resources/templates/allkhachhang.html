@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>customer</title>
+</head>
+<body>
+<div class="container">
+    <a href="/">Home</a>
+    <form >
+        Search by ho ten:
+        <input name="s" type="text"/>
+        <input type="submit" value="Search"/>
+    </form><br/>
+<table class="table table-danger">
+    <tr>
+        <th>IDKhachHang</th>
+        <th>Ho Ten</th>
+        <th>Ngay Sinh</th>
+        <th>ID Card</th>
+        <th>Phone number</th>
+        <th>Email</th>
+        <th>Dia chi</th>
+        <th>Action</th>
+    </tr>
+    <th:block th:each="kh : ${allkhachhang}">
+        <tr>
+            <td th:text="${kh.getIdKhachHang()}"></td>
+            <td th:text="${kh.getHoTen()}"></td>
+            <td th:text="${kh.getNgaySinh()}"></td>
+            <td th:text="${kh.getIdCard()}"></td>
+            <td th:text="${kh.getsDT()}"></td>
+            <td th:text="${kh.getEmail()}"></td>
+            <td th:text="${kh.getDiaChi()}"></td>
+            <td><a th:href="@{/edit/{id}(id=${kh.getIdKhachHang()})}">edit</a></td>
+            <td><a th:href="@{/delete/{id}(id=${kh.getIdKhachHang()})}">delete</a></td>
+        </tr>
+    </th:block>
+</table>
+    <div>
+        <a th:href="@{'/displaycustomer'(page=${allkhachhang.number - 1},s=${search})}" th:if="${allkhachhang.hasPrevious()}">Previous</a>
+        <span th:text="${allkhachhang.number + 1}"></span>/<span th:text="${allkhachhang.totalPages}"></span>
+        <a th:href="@{'/displaycustomer'(page=${allkhachhang.getNumber() + 1},s=${search})}" th:if="${allkhachhang.hasNext()}">Next</a>
+    </div>
+</div>
+</body>
+</html>

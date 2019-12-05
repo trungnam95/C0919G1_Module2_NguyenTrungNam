@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 
 public interface DichVuService {
     Iterable<DichVu> findAllByLoaiDichVu(LoaiDichVu loaiDichVu);
-    Iterable<DichVu> findAllByDienTichBetween(int dientichbatdau, int dientichketthuc);
+    DichVu findById(Long id);
     Page<DichVu> findAll(Pageable pageable);
     Page<DichVu> findAllByChiPhiThueBetween(double chiphithuebatdau, double chiphithueketthuc, Pageable pageable);
     void save(DichVu dichVu);

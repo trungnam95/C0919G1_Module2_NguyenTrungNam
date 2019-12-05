@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3682ceed-e749-4b93-9e64-bd5a663fa52c" name="Default Changelist" comment="" />
+    <list default="true" id="3682ceed-e749-4b93-9e64-bd5a663fa52c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../casestudy-module2/src/main/java/com/codegym/casestudymodule2/controller/KhachHangController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../casestudy-module2/src/main/java/com/codegym/casestudymodule2/controller/KhachHangController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../casestudy-module2/src/main/java/com/codegym/casestudymodule2/entity/KhachHang.java" beforeDir="false" afterPath="$PROJECT_DIR$/../casestudy-module2/src/main/java/com/codegym/casestudymodule2/entity/KhachHang.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../casestudy-module2/src/main/java/com/codegym/casestudymodule2/repositories/KhachHangRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../casestudy-module2/src/main/java/com/codegym/casestudymodule2/repositories/KhachHangRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../casestudy-module2/src/main/java/com/codegym/casestudymodule2/service/Impl/KhachHangSerrviceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../casestudy-module2/src/main/java/com/codegym/casestudymodule2/service/Impl/KhachHangSerrviceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../casestudy-module2/src/main/java/com/codegym/casestudymodule2/service/KhachHangService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../casestudy-module2/src/main/java/com/codegym/casestudymodule2/service/KhachHangService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../casestudy-module2/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../casestudy-module2/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../casestudy-module2/src/main/resources/templates/alldichvu.html" beforeDir="false" afterPath="$PROJECT_DIR$/../casestudy-module2/src/main/resources/templates/alldichvu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../casestudy-module2/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/../casestudy-module2/src/main/resources/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../casestudy-module2/src/main/resources/templates/khachhang.html" beforeDir="false" afterPath="$PROJECT_DIR$/../casestudy-module2/src/main/resources/templates/khachhang.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +41,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../tao-gio-hang" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -56,6 +68,7 @@
       <workItem from="1574817119105" duration="86000" />
       <workItem from="1574817220060" duration="21000" />
       <workItem from="1574817262504" duration="77000" />
+      <workItem from="1575430697663" duration="24000" />
     </task>
     <servers />
   </component>

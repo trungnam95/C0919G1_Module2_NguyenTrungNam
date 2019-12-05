@@ -2,17 +2,30 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>customer</title>
 </head>
 <body>
+<div class="container">
+    <a href="/">Home</a>
 <form action="/displaydichvu" method="get">
     Search by cost between
-    <input name="chiphithuebatdau" placeholder="0"  type="number"/>
-    <input name="chiphithueketthuc" placeholder="0" type="number"/>
+    <select name="chiphithuebatdau" >
+        <option value="1000000">1 trieu</option>
+        <option value="2000000">2 trieu</option>
+    </select>
+    <select name="chiphithueketthuc" >
+        <option value="1000000">1 trieu</option>
+        <option value="2000000">2 trieu</option>
+    </select>
     <input type="submit" value="Search"/>
+
 </form>
-<table>
+    <br>
+<table class="table table-danger">
     <tr>
         <th>IDDichVu</th>
         <th>TenDichVu</th>
@@ -21,6 +34,7 @@
         <th>Songuoitoida</th>
         <th>ChiPhiThue</th>
         <th>Trangthai</th>
+        <th>Action</th>
     </tr>
     <th:block th:each="dichvu : ${listalldichvu}">
         <tr>
@@ -31,8 +45,10 @@
             <td th:text="${dichvu.getSoNguoiToiDa()}"></td>
             <td th:text="${dichvu.getChiPhiThue()}"></td>
             <td th:text="${dichvu.getTrangThai()}"></td>
+            <td><a th:href="@{addtofavorite/{id}(id=${dichvu.getIdDichVu()})}">Add to favorite list</a></td>
         </tr>
     </th:block>
 </table>
+</div>
 </body>
 </html>

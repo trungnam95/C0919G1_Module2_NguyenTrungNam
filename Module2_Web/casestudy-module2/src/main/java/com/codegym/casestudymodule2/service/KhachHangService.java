@@ -7,4 +7,7 @@ import org.springframework.data.domain.Pageable;
 public  interface KhachHangService {
     Page<KhachHang> findAll(Pageable pageable);
     void save(KhachHang khachHang);
+    Page<KhachHang> findAllByHoTenContaining(String name, Pageable pageable);
+    KhachHang findById(Long id);
+    void deleteById(Long id);
 }

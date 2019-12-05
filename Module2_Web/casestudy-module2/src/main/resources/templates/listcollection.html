@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>customer</title>
+</head>
+<body>
+<div class="container">
+<a th:href="@{/}">Back to home</a>
+
+<table class="table table-danger">
+    <thead>
+    <tr>
+        <th>IDDichVu</th>
+        <th>TenDichVu</th>
+        <th>Dientich</th>
+        <th>SoTang</th>
+        <th>Songuoitoida</th>
+        <th>ChiPhiThue</th>
+        <th>Trangthai</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:each="dv: ${listdichvu.values()}">
+        <tr>
+            <td th:text="${dv.dichVu.idDichVu}"></td>
+            <td th:text="${dv.dichVu.tenDichVu}"></td>
+            <td th:text="${dv.dichVu.dienTich}"></td>
+            <td th:text="${dv.dichVu.soTang}"></td>
+            <td th:text="${dv.dichVu.soNguoiToiDa}"></td>
+            <td th:text="${dv.dichVu.chiPhiThue}"></td>
+            <td th:text="${dv.dichVu.trangThai}"></td>
+            <td><a th:href="@{deletecollection/{id}(id=${dv.dichVu.idDichVu})}">Delete</a></td>
+        </tr>
+    </th:block>
+    </tbody>
+</table>
+</div>
+</body>
+</html>

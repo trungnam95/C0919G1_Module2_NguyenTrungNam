@@ -20,8 +20,8 @@ public class DichVuServiceImpl implements DichVuService {
     }
 
     @Override
-    public Iterable<DichVu> findAllByDienTichBetween(int dientichbatdau, int dientichketthuc) {
-        return dichVuRepository.findAllByDienTichBetween(dientichbatdau, dientichketthuc);
+    public DichVu findById(Long id) {
+        return dichVuRepository.findById(id).orElse(null);
     }
 
     @Override

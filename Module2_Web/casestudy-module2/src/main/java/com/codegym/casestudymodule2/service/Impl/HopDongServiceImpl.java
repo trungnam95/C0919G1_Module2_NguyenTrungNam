@@ -5,6 +5,8 @@ import com.codegym.casestudymodule2.entity.HopDong;
 import com.codegym.casestudymodule2.repositories.HopDongRepository;
 import com.codegym.casestudymodule2.service.HopDongService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -19,5 +21,10 @@ public class HopDongServiceImpl implements HopDongService {
     @Override
     public void save(HopDong hopDong) {
         hopDongRepository.save(hopDong);
+    }
+
+    @Override
+    public Page<HopDong> findAll(Pageable pageable) {
+        return hopDongRepository.findAll(pageable);
     }
 }

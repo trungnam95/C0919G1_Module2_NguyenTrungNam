@@ -22,4 +22,20 @@ public class KhachHangSerrviceImpl implements KhachHangService {
     public void save(KhachHang khachHang) {
         khachHangRepository.save(khachHang);
     }
+
+    @Override
+    public Page<KhachHang> findAllByHoTenContaining(String name, Pageable pageable) {
+        return khachHangRepository.findAllByHoTenContaining(name, pageable);
+    }
+
+    @Override
+    public KhachHang findById(Long id) {
+        return khachHangRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        khachHangRepository.deleteById(id);
+    }
+
 }
