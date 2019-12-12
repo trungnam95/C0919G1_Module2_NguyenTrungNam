@@ -25,8 +25,8 @@ public class DichVuServiceImpl implements DichVuService {
     }
 
     @Override
-    public Page<DichVu> findAll(Pageable pageable) {
-        return dichVuRepository.findAll(pageable);
+    public Iterable<DichVu> findAll() {
+        return dichVuRepository.findAll();
     }
 
     @Override

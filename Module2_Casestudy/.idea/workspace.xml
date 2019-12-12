@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f804fee3-7702-4255-b66d-e44494374f22" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Module2_Web/casestudy-module2/src/main/java/com/codegym/casestudymodule2/controller/DichVuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Module2_Web/casestudy-module2/src/main/java/com/codegym/casestudymodule2/controller/DichVuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Module2_Web/casestudy-module2/src/main/java/com/codegym/casestudymodule2/controller/HopDongController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Module2_Web/casestudy-module2/src/main/java/com/codegym/casestudymodule2/controller/HopDongController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Module2_Web/casestudy-module2/src/main/java/com/codegym/casestudymodule2/controller/LoaiDichVuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Module2_Web/casestudy-module2/src/main/java/com/codegym/casestudymodule2/controller/LoaiDichVuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Module2_Web/casestudy-module2/src/main/java/com/codegym/casestudymodule2/entity/KhachHang.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Module2_Web/casestudy-module2/src/main/java/com/codegym/casestudymodule2/entity/KhachHang.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Module2_Web/casestudy-module2/src/main/java/com/codegym/casestudymodule2/repositories/HopDongRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Module2_Web/casestudy-module2/src/main/java/com/codegym/casestudymodule2/repositories/HopDongRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Module2_Web/casestudy-module2/src/main/java/com/codegym/casestudymodule2/service/DichVuService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Module2_Web/casestudy-module2/src/main/java/com/codegym/casestudymodule2/service/DichVuService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Module2_Web/casestudy-module2/src/main/java/com/codegym/casestudymodule2/service/HopDongService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Module2_Web/casestudy-module2/src/main/java/com/codegym/casestudymodule2/service/HopDongService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Module2_Web/casestudy-module2/src/main/java/com/codegym/casestudymodule2/service/Impl/DichVuServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Module2_Web/casestudy-module2/src/main/java/com/codegym/casestudymodule2/service/Impl/DichVuServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Module2_Web/casestudy-module2/src/main/java/com/codegym/casestudymodule2/service/Impl/HopDongServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Module2_Web/casestudy-module2/src/main/java/com/codegym/casestudymodule2/service/Impl/HopDongServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Module2_Web/casestudy-module2/src/main/resources/templates/alldichvu.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Module2_Web/casestudy-module2/src/main/resources/templates/alldichvu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Module2_Web/casestudy-module2/src/main/resources/templates/formcreate.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Module2_Web/casestudy-module2/src/main/resources/templates/formcreate.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Module2_Web/casestudy-module2/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Module2_Web/casestudy-module2/src/main/resources/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Module2_Web/casestudy-module2/src/main/resources/templates/hopdong.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Module2_Web/casestudy-module2/src/main/resources/templates/hopdong.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Module2_Web/casestudy-module2/src/main/resources/templates/hopdongall.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Module2_Web/casestudy-module2/src/main/resources/templates/hopdongall.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Module2_Web/casestudy-module2/src/main/resources/templates/viewdichvuvilla.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Module2_Web/casestudy-module2/src/main/resources/templates/viewdichvuvilla.html" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1UmeG0CKJdM3W49QfecYWnGpdjh" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Module2_Web/casestudy-module2" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f804fee3-7702-4255-b66d-e44494374f22" name="Default Changelist" comment="" />
+      <created>1575966097510</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1575966097510</updated>
+      <workItem from="1575966098732" duration="11000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

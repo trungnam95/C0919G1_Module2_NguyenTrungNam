@@ -21,7 +21,7 @@ public class LoaiDichVuController {
     public ModelAndView loaiDichVu(Pageable pageable) {
         Page<LoaiDichVu> loaiDichVus=loaiDichVuService.findAll(pageable);
         ModelAndView modelAndView=new ModelAndView("home");
-        modelAndView.addObject("loaidichvuall",loaiDichVus);
+        modelAndView.addObject("allloaidichvu",loaiDichVus);
         return modelAndView;
     }
 

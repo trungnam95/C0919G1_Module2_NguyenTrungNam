@@ -14,6 +14,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 @Controller
 @SessionAttributes("listdichvu")
 public class DichVuController {
@@ -40,10 +44,10 @@ public class DichVuController {
     @GetMapping("displaydichvu")
     public ModelAndView listDichVu(
             @RequestParam(value = "chiphithuebatdau", required = false) Double s1, @RequestParam(value = "chiphithueketthuc", required = false) Double s2, Pageable pageable) {
-        Page<DichVu> dichVus;
+        Iterable<DichVu> dichVus;
         ModelAndView modelAndView = new ModelAndView("alldichvu");
         if (s1 == null || s2 == null) {
-            dichVus = dichVuService.findAll(pageable);
+            dichVus = dichVuService.findAll();
         } else {
             dichVus = dichVuService.findAllByChiPhiThueBetween(s1, s2, pageable);
         }
@@ -70,10 +74,11 @@ public class DichVuController {
     }
 
     @ModelAttribute("listdichvu")
-    public DichVuList setUpDichVu(){
+    public DichVuList setUpDichVu() {
         return new DichVuList();
     }
-    @GetMapping("addtofavorite/{id}")
+
+        @GetMapping("addtofavorite/{id}")
     public String addToCollection(@PathVariable Long id, @ModelAttribute("listdichvu") DichVuList dichVuList) {
         DichVu dichVu=dichVuService.findById(id);
         if (dichVuList.containsKey(id)) {
@@ -97,8 +102,10 @@ public class DichVuController {
         model.addAttribute("listdichvu", dichVuList);
         return "redirect:/collectiondichvu";
     }
+
     @GetMapping("collectiondichvu")
-    public ModelAndView viewFavorite(){
+    public ModelAndView viewFavorite() {
         return new ModelAndView("listcollection");
     }
+
 }

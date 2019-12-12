@@ -83,10 +83,13 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="loaidichvu: ${loaidichvuall}">
+                <tr th:each="loaidichvu: ${allloaidichvu}">
                     <td th:text="${loaidichvu.getIdLoaiDichVu()}"></td>
                     <td><a th:href="@{displaydichvu/{id}(id=${loaidichvu.getIdLoaiDichVu()})}"
                            th:text="${loaidichvu.getTenLoaiDichVu()}"></a></td>
+<!--                    <td><a th:href="@{datdichvu/{id}(id=${loaidichvu.getIdLoaiDichVu()})}">-->
+<!--                        <button class="btn btn-primary">Dat Dich Vu</button>-->
+<!--                    </a></td>-->
                 </tr>
                 </tbody>
             </table>

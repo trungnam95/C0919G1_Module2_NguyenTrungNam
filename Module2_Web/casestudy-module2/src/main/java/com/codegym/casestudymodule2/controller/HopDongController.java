@@ -11,10 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class HopDongController {
@@ -26,8 +28,8 @@ public class HopDongController {
     private KhachHangService khachHangService;
 
     @ModelAttribute("dichvu")
-    public Iterable<DichVu> dichVu(Pageable pageable) {
-        return dichVuService.findAll(pageable);
+    public Iterable<DichVu> dichVu() {
+        return dichVuService.findAll();
     }
 
     @ModelAttribute("khachhang")
@@ -43,19 +45,35 @@ public class HopDongController {
     }
 
     @PostMapping("registerservice")
-    public ModelAndView createHopDong(@ModelAttribute("hopdong") HopDong hopDong) {
+    public ModelAndView createHopDong(@ModelAttribute("hopdong") HopDong hopDong, HttpServletResponse response,
+                                      HttpServletRequest request) {
         hopDongService.save(hopDong);
+        KhachHang khachHang=khachHangService.findById(hopDong.getKhachHang().getIdKhachHang());
         ModelAndView modelAndView = new ModelAndView("hopdong");
         modelAndView.addObject("hopdong", new HopDong());
+        Iterable<HopDong> listHopDong=hopDongService.findAllByKhachHang(khachHang);
+        for(HopDong hopdong:listHopDong){
+            String cookieValue=hopdong.getIdHopDong()+"_"+hopdong.getKhachHang().getIdKhachHang()+"_"+hopdong.getDichVu().getIdDichVu()+"_"+hopdong.getNgayLamHopDong()+"_"+
+                    hopdong.getNgayKetThuc();
+            Cookie cookie=new Cookie("hopdong" +hopdong.getKhachHang().getIdKhachHang(),cookieValue);
+            cookie.setMaxAge(60);
+            cookie.setPath("/history");
+            response.addCookie(cookie);
+        }
+
         modelAndView.addObject("message", "create hop dong succesfully");
         return modelAndView;
     }
-
     @GetMapping("displayhopdong")
-    public ModelAndView displayHopDong(Pageable pageable) {
-        Page<HopDong> hopDongs = hopDongService.findAll(pageable);
+    public ModelAndView displayHopDong() {
+        Iterable<HopDong> hopDongs = hopDongService.findAll();
         ModelAndView modelAndView = new ModelAndView("hopdongall");
         modelAndView.addObject("allhopdong",hopDongs);
         return modelAndView;
+    }
+    @GetMapping("/deletehopdong/{id}")
+    public String delete(@PathVariable("id") Long id){
+        hopDongService.deleteById(id);
+        return "redirect:/displayhopdong";
     }
 }

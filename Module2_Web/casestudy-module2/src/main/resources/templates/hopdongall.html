@@ -19,6 +19,7 @@
             <th>Ten khach hang</th>
             <th>Ngay Lam Hop Dong</th>
             <th>Ngay ket thuc</th>
+            <th>Action</th>
         </tr>
         <th:block th:each="hd : ${allhopdong}">
             <tr>
@@ -28,6 +29,7 @@
                 <td th:text="${hd.khachHang.getHoTen()}"></td>
                 <td th:text="${hd.getNgayLamHopDong()}"></td>
                 <td th:text="${hd.getNgayKetThuc()}"></td>
+                <td><a th:href="@{/deletehopdong/{id}(id=${hd.getIdHopDong()})}">delete</a></td>
             </tr>
         </th:block>
     </table>

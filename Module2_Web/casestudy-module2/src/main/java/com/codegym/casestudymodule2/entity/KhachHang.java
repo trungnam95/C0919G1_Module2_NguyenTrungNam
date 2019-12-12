@@ -22,7 +22,6 @@ public class KhachHang {
     private String hoTen;
 
     @Column(name="ngaysinh")
-    @NotNull(message = "invalid")
 //    @Pattern( regexp="^(0?[1-9]|[12][0-9]|3[01])[\\/\\-](0?[1-9]|1[012])[\\/\\-]\\d{4}$",message = "Birthday is invalid")
     private Date ngaySinh;
 

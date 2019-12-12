@@ -21,6 +21,11 @@
     <form th:action="@{/registerservice}" th:object="${hopdong}" method="post">
         <table>
             <tr>
+                <td>
+                    <input type="hidden" name="id" th:field="*{idHopDong}">
+                </td>
+            </tr>
+            <tr>
                 <td>Ngay lam hop dong</td>
                 <td><input type="date" th:field="*{ngayLamHopDong}"/></td>
                 <!--                <td th:if="${#fields.hasErrors('tenDichVu')}" th:errors="*{tenDichVu}">Error</td>-->

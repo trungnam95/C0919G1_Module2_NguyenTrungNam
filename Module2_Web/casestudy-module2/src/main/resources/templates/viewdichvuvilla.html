@@ -11,10 +11,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-
 <h1>information loai dich vu: <span th:text="${loaidichvus.getTenLoaiDichVu()}"></span></h1>
 <th:block th:if="${loaidichvus.getIdLoaiDichVu()==1}">
-    <img src="/house.jpg" height="400" width="800">
+    <img  src="/house.jpg" height="400" width="800">
 </th:block>
 <th:block th:if="${loaidichvus.getIdLoaiDichVu()==2}">
     <img src="/villa.jpg" height="400" width="800">
@@ -31,6 +30,7 @@
         <th>Songuoitoida</th>
         <th>ChiPhiThue</th>
         <th>Trangthai</th>
+        <th>Action</th>
     </tr>
     <th:block th:each="dichvu : ${dichvulist}">
         <tr>

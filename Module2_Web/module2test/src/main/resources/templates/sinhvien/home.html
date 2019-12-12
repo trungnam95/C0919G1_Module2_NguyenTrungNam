@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>Sinhvien</title>
+</head>
+<body>
+<div class="container">
+    <a href="/">Home</a><br>
+    <a th:href="@{create}">create sinhvien</a><br>
+    <a th:href="@{listschool}">list school</a>
+    <form >
+        Search by ho ten:
+        <input name="s" type="text"/>
+        <input type="submit" value="Search"/>
+    </form><br/>
+    <table class="table table-danger">
+        <tr>
+            <th>ID Sinh Vien</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Sex</th>
+            <th>School</th>
+            <th>Action</th>
+        </tr>
+        <th:block th:each="sv : ${sinhvien}">
+            <tr>
+                <td th:text="${sv.getId()}"></td>
+                <td th:text="${sv.getName()}"></td>
+                <td th:text="${sv.getAge()}"></td>
+                <td th:text="${sv.getSex()}"></td>
+                <td th:text="${sv.school.getName()}"></td>
+                <td><a th:href="@{edit/{id}(id=${sv.getId()})}">edit</a></td>
+                <td><a th:href="@{delete/{id}(id=${sv.getId()})}">delete</a></td>
+                <td><a th:href="@{add/{id}(id=${sv.getId()})}">add</a></td>
+            </tr>
+        </th:block>
+    </table>
+    <div>
+        <a th:href="@{'/'(page=${sinhvien.number - 1},s=${search})}" th:if="${sinhvien.hasPrevious()}">Previous</a>
+        <span th:text="${sinhvien.number + 1}"></span>/<span th:text="${sinhvien.totalPages}"></span>
+        <a th:href="@{'/'(page=${sinhvien.getNumber() + 1},s=${search})}" th:if="${sinhvien.hasNext()}">Next</a>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>customer</title>
+</head>
+<body>
+<div class="container">
+    <a href="/">Home</a><br>
+    <a th:href="@{createschool}">create school</a>
+    <form >
+        Search by ten:
+        <input name="s" type="text"/>
+        <input type="submit" value="Search"/>
+    </form><br/>
+    <table class="table table-danger">
+        <tr>
+            <th>ID school</th>
+            <th>Name</th>
+        </tr>
+        <th:block th:each="sc : ${school}">
+            <tr>
+                <td th:text="${sc.getId()}"></td>
+                <td th:text="${sc.getName()}"></td>
+                <td><a th:href="@{viewschool/{id}(id=${sc.getId()})}">view</a></td>
+                <td><a th:href="@{deleteschool/{id}(id=${sc.getId()})}">delete</a></td>
+            </tr>
+        </th:block>
+    </table>
+<!--    <div>-->
+<!--        <a th:href="@{'/'(page=${sinhvien.number - 1},s=${search})}" th:if="${sinhvien.hasPrevious()}">Previous</a>-->
+<!--        <span th:text="${sinhvien.number + 1}"></span>/<span th:text="${sinhvien.totalPages}"></span>-->
+<!--        <a th:href="@{'/'(page=${sinhvien.getNumber() + 1},s=${search})}" th:if="${sinhvien.hasNext()}">Next</a>-->
+<!--    </div>-->
+</div>
+</body>
+</html>

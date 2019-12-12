@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1>Edit khach hang</h1>
+    <p>
+        <a th:href="@{/}">home</a>
+    </p>
+    <th:block th:if="${message}">
+        <p th:text="${message}"></p>
+    </th:block>
+    <form th:action="@{/edit}" th:object="${khachhang}" method="post">
+        <table>
+            <tr>
+                <!--                <td>Ma khach hang</td>-->
+                <td><input type="hidden" th:field="*{id}"/></td>
+                <td th:if="${#fields.hasErrors('id')}" th:errors="*{id}">Error</td>
+            </tr>
+            <tr>
+                <td>Loai khach hang:</td>
+                <td><input type="text" th:field="*{loaiKhachHang}"/></td>
+                <td th:if="${#fields.hasErrors('loaiKhachHang')}" th:errors="*{loaiKhachHang}">Error</td>
+            </tr>
+            <tr>
+                <td>ho ten</td>
+                <td><input type="text" th:field="*{hoTen}"/></td>
+                <td th:if="${#fields.hasErrors('hoTen')}" th:errors="*{hoTen}">Error</td>
+            </tr>
+            <tr>
+                <td>gioi tinh:</td>
+                <td>
+                    <select th:field="*{gioiTinh}">
+                        <option th:value="Nam">Nam</option>
+                        <option th:value="Nu">Nu</option>
+                    </select>
+                </td>
+                <!--                <td th:if="${#fields.hasErrors('dienTich')}" th:errors="*{dienTich}">Error</td>-->
+            </tr>
+            <tr>
+                <td>so dien thoai</td>
+                <td><input type="text" th:field="*{soDienThoai}"/></td>
+                <td th:if="${#fields.hasErrors('soDienThoai')}" th:errors="*{soDienThoai}">Error</td>
+            </tr>
+            <tr>
+                <td>so cmnd</td>
+                <td><input type="text" th:field="*{soCmnd}"/></td>
+                <td th:if="${#fields.hasErrors('soCmnd')}" th:errors="*{soCmnd}">Error</td>
+            </tr>
+            <tr>
+                <td>email</td>
+                <td><input type="text" th:field="*{email}"/></td>
+                <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error</td>
+            </tr>
+            <tr>
+                <td>diachi</td>
+                <td><input type="text" th:field="*{diaChi}"/></td>
+                <td th:if="${#fields.hasErrors('diaChi')}" th:errors="*{diaChi}">Error</td>
+            </tr>
+            <tr>
+                <td>ngay sinh</td>
+                <td><input type="date" th:field="*{ngaySinh}"/></td>
+                <td th:if="${#fields.hasErrors('ngaySinh')}" th:errors="*{ngaySinh}">Error</td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="submit" class="btn btn-primary">edit</button>
+                </td>
+            </tr>
+
+        </table>
+    </form>
+</div>
+</body>
+</html>
